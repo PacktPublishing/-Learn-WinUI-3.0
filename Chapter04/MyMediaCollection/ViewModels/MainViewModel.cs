@@ -12,7 +12,6 @@ namespace MyMediaCollection.ViewModels
         private TestObservableCollection<MediaItem> allItems;
         private TestObservableCollection<string> mediums;
         private MediaItem selectedMediaItem;
-        private int additionalItemCount = 1;
         private INavigationService _navigationService;
         private IDataService _dataService;
 
@@ -113,18 +112,6 @@ namespace MyMediaCollection.ViewModels
 
         private void AddOrEditItem()
         {
-            //var newItem = new MediaItem
-            //{
-            //    Id = 3 + additionalItemCount,
-            //    Location = LocationType.InCollection,
-            //    MediaType = (ItemType)(additionalItemCount % 3),
-            //    MediumInfo = new Medium { Id = 1, MediaType = ItemType.Music, Name = "CD" },
-            //    Name = $"CD {additionalItemCount}"
-            //};
-
-            //Items.Add(newItem);
-            //additionalItemCount++;
-
             var selectedItemId = -1;
 
             if (SelectedMediaItem != null)

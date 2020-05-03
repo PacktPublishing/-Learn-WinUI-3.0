@@ -1,5 +1,7 @@
 ﻿using System;
 using MyMediaCollection.ViewModels;
+using UnitTestProject2;
+using UnitTestProject2.Fakes;
 using Windows.UI.Core;
 using Xunit;
 
@@ -15,7 +17,8 @@ namespace MyMediaCollection.Test.ViewModels
 
             await App.SharedWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                vm = new MainViewModel();
+                vm = new MainViewModel(ServiceHelper.GetMockNavigationService().Object,
+                                       ServiceHelper.GetMockDataService().Object);
             });
 
             // Assert
@@ -31,7 +34,8 @@ namespace MyMediaCollection.Test.ViewModels
 
             await App.SharedWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                vm = new MainViewModel();
+                vm = new MainViewModel(ServiceHelper.GetMockNavigationService().Object,
+                                        ServiceHelper.GetMockDataService().Object);
             });
 
             // Assert
@@ -47,7 +51,8 @@ namespace MyMediaCollection.Test.ViewModels
 
             await App.SharedWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                vm = new MainViewModel();
+                vm = new MainViewModel(ServiceHelper.GetMockNavigationService().Object,
+                                       ServiceHelper.GetMockDataService().Object);
 
                 // Act
                 vm.SelectedMediaItem = vm.Items[1];
@@ -65,7 +70,8 @@ namespace MyMediaCollection.Test.ViewModels
 
             await App.SharedWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                vm = new MainViewModel();
+                vm = new MainViewModel(ServiceHelper.GetMockNavigationService().Object,
+                                        new FakeDataService());
 
                 // Act
                 vm.SelectedMediaItem = vm.Items[1];
@@ -84,7 +90,8 @@ namespace MyMediaCollection.Test.ViewModels
 
             await App.SharedWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                vm = new MainViewModel();
+                vm = new MainViewModel(ServiceHelper.GetMockNavigationService().Object,
+                                       ServiceHelper.GetMockDataService().Object);
 
                 // Act
                 vm.AddEditCommand.Execute(null);
