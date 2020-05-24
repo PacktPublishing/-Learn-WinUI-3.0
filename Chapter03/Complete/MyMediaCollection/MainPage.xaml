@@ -23,9 +23,9 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Media Collection" Margin="4" FontWeight="Bold" VerticalAlignment="Center"/>
-            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <TextBlock HorizontalAlignment="Right" Text="Media Type:" Margin="4" FontWeight="Bold" VerticalAlignment="Center"/>
-                <ComboBox ItemsSource="{x:Bind ViewModel.Mediums}" SelectedItem="{x:Bind ViewModel.SelectedMedium, Mode=TwoWay}" HorizontalAlignment="Right" MinWidth="120" Margin="0,2,6,4"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Media Type:" Margin="4" FontWeight="Bold" VerticalAlignment="Center"/>
+                <ComboBox ItemsSource="{x:Bind ViewModel.Mediums}" SelectedItem="{x:Bind ViewModel.SelectedMedium, Mode=TwoWay}" MinWidth="120" Margin="0,2,6,4"/>
             </StackPanel>
         </Grid>
 
