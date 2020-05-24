@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml.Controls;
 using MyMediaCollection.Model;
 using MyMediaCollection.Enums;
 using Windows.UI.Popups;
+using System.Linq;
 
 namespace MyMediaCollection
 {
@@ -22,14 +23,13 @@ namespace MyMediaCollection
 
             ItemList.Loaded += ItemList_Loaded;
             ItemFilter.Loaded += ItemFilter_Loaded;
-            PopulateData();
             Loaded += MainPage_Loaded;
         }
 
         private void MainPage_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             ItemFilter.SelectionChanged += ItemFilter_SelectionChanged;
-            AddButton.Click += AddButton_Click;
+            PopulateData();
         }
 
         private async void AddButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
@@ -81,9 +81,9 @@ namespace MyMediaCollection
             _mediums = new List<string>
             {
                 "All",
-                ItemType.Book.ToString(),
-                ItemType.Music.ToString(),
-                ItemType.Video.ToString()
+                nameof(ItemType.Book),
+                nameof(ItemType.Music),
+                nameof(ItemType.Video)
             };
         }
 
@@ -102,18 +102,11 @@ namespace MyMediaCollection
 
         private void ItemFilter_SelectionChanged(object sender, Microsoft.UI.Xaml.Controls.SelectionChangedEventArgs e)
         {
-            var updatedItems = new List<MediaItem>();
-
-            foreach (var item in _allItems)
-            {
-                if (string.IsNullOrWhiteSpace(ItemFilter.SelectedValue.ToString()) ||
-                    ItemFilter.SelectedValue.ToString() == "All" ||
-                    ItemFilter.SelectedValue.ToString() == item.MediaType.ToString())
-                {
-                    updatedItems.Add(item);
-                }
-            }
-
+            var updatedItems = (from item in _allItems
+                                where string.IsNullOrWhiteSpace(ItemFilter.SelectedValue.ToString()) ||
+                                      ItemFilter.SelectedValue.ToString() == "All" ||
+                                      ItemFilter.SelectedValue.ToString() == item.MediaType.ToString()
+                                select item).ToList();
             ItemList.ItemsSource = updatedItems;
         }
     }

@@ -23,9 +23,9 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Media Collection" Margin="4" FontWeight="Bold" VerticalAlignment="Center"/>
-            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <TextBlock HorizontalAlignment="Right" Text="Media Type:" Margin="4" FontWeight="Bold" VerticalAlignment="Center"/>
-                <ComboBox x:Name="ItemFilter" HorizontalAlignment="Right" MinWidth="120" Margin="0,2,6,4"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Media Type:" Margin="4" FontWeight="Bold" VerticalAlignment="Center"/>
+                <ComboBox x:Name="ItemFilter" MinWidth="120" Margin="0,2,6,4"/>
             </StackPanel>
         </Grid>
 
@@ -63,6 +63,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button x:Name="AddButton" Content="Add Item" HorizontalAlignment="Right" Grid.Row="2" Margin="8"/>
+        <Button Content="Add Item" HorizontalAlignment="Right" Grid.Row="2" Margin="8" Click="AddButton_Click"/>
     </Grid>
 </Page>
