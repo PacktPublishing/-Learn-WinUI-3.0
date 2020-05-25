@@ -60,7 +60,7 @@ namespace MyMediaCollection.ViewModels
 
             allItems = new TestObservableCollection<MediaItem>(Items);
 
-            mediums = new TestObservableCollection<string>
+            mediums = new List<string>
             {
                 "All",
                 nameof(ItemType.Book),
