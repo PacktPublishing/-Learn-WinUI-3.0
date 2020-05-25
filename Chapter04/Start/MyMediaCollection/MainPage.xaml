@@ -23,9 +23,9 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Media Collection" Margin="4" FontWeight="Bold" VerticalAlignment="Center"/>
-            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <TextBlock HorizontalAlignment="Right" Text="Media Type:" Margin="4" FontWeight="Bold" VerticalAlignment="Center"/>
-                <ComboBox ItemsSource="{x:Bind ViewModel.Mediums}" SelectedItem="{x:Bind ViewModel.SelectedMedium, Mode=TwoWay}" HorizontalAlignment="Right" MinWidth="120" Margin="0,2,6,4"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Media Type:" Margin="4" FontWeight="Bold" VerticalAlignment="Center"/>
+                <ComboBox ItemsSource="{x:Bind ViewModel.Mediums}" SelectedItem="{x:Bind ViewModel.SelectedMedium, Mode=TwoWay}" MinWidth="120" Margin="0,2,6,4"/>
             </StackPanel>
         </Grid>
 
@@ -47,7 +47,7 @@
                     </Grid>
                 </DataTemplate>
             </ListView.HeaderTemplate>
-            
+
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:MediaItem">
                     <Grid>
@@ -56,21 +56,22 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Text="{x:Bind Path=MediumInfo.Name}"/>
+                        <TextBlock Text="{x:Bind Path=MediumInfo.Name, Mode=TwoWay}"/>
                         <TextBlock Grid.Column="1" Text="{x:Bind Path=Name}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <Button Command="{x:Bind ViewModel.AddEditCommand}" Content="Add Item" HorizontalAlignment="Right" Margin="8,8,0,8"/>
-            <Button Command="{x:Bind ViewModel.DeleteCommand}" Content="Delete Item" Grid.Column="1" HorizontalAlignment="Right" Margin="8"/>
-        </Grid>
+        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button Command="{x:Bind ViewModel.AddEditCommand}"
+                    Content="Add Item"
+                    Margin="8,8,0,8"/>
+            <Button Command="{x:Bind ViewModel.DeleteCommand}"
+                    Content="Delete Item"
+                    Margin="8"/>
+        </StackPanel>
     </Grid>
 </Page>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Input;
 using MyMediaCollection.Enums;
 using MyMediaCollection.Model;
+using System.Collections.Generic;
 
 namespace MyMediaCollection.ViewModels
 {
@@ -9,7 +10,7 @@ namespace MyMediaCollection.ViewModels
         private string selectedMedium;
         private TestObservableCollection<MediaItem> items;
         private TestObservableCollection<MediaItem> allItems;
-        private TestObservableCollection<string> mediums;
+        private IList<string> mediums;
         private MediaItem selectedMediaItem;
         private int additionalItemCount = 1;
 
@@ -18,6 +19,9 @@ namespace MyMediaCollection.ViewModels
             PopulateData();
 
             DeleteCommand = new RelayCommand(DeleteItem, CanDeleteItem);
+
+            // No CanExecute param is needed for this command
+            // because you can always add or edit items.
             AddEditCommand = new RelayCommand(AddOrEditItem);
         }
 
@@ -79,7 +83,7 @@ namespace MyMediaCollection.ViewModels
             }
         }
 
-        public TestObservableCollection<string> Mediums
+        public IList<string> Mediums
         {
             get
             {
@@ -129,11 +133,15 @@ namespace MyMediaCollection.ViewModels
 
         public void AddOrEditItem()
         {
+            // Note this is temporary until
+            // we use a real data source for items.
+            const int startingItemCount = 3;
+
             var newItem = new MediaItem
             {
-                Id = 3 + additionalItemCount,
+                Id = startingItemCount + additionalItemCount,
                 Location = LocationType.InCollection,
-                MediaType = (ItemType)(additionalItemCount % 3),
+                MediaType = ItemType.Music,
                 MediumInfo = new Medium { Id = 1, MediaType = ItemType.Music, Name = "CD" },
                 Name = $"CD {additionalItemCount}"
             };

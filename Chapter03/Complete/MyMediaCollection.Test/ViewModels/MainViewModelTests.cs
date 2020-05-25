@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using MyMediaCollection.ViewModels;
 using Windows.UI.Core;
 using Xunit;
@@ -50,10 +51,12 @@ namespace MyMediaCollection.Test.ViewModels
                 vm = new MainViewModel();
 
                 // Act
-                vm.SelectedMediaItem = vm.Items[1];
+                vm.SelectedMediaItem = vm.Items.Skip(1).FirstOrDefault();
             });
 
             // Assert
+            // Pass null here because our method for CanExecute
+            // takes no parameters.
             Assert.True(vm.DeleteCommand.CanExecute(null));
         }
 
@@ -68,7 +71,10 @@ namespace MyMediaCollection.Test.ViewModels
                 vm = new MainViewModel();
 
                 // Act
-                vm.SelectedMediaItem = vm.Items[1];
+                vm.SelectedMediaItem = vm.Items.Skip(1).FirstOrDefault();
+
+                // Pass null here because our
+                // delete command takes no parameters.
                 vm.DeleteCommand.Execute(null);
             });
 
