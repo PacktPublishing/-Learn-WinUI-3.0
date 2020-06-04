@@ -30,7 +30,10 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Name:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Margin="8" Text="{x:Bind ViewModel.ItemName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Grid.Column="1" 
+                     HorizontalAlignment="Stretch" 
+                     Margin="8" 
+                     Text="{x:Bind ViewModel.ItemName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             
             <TextBlock Text="Media Type:" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
             <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="8" ItemsSource="{x:Bind ViewModel.ItemTypes}" SelectedValue="{x:Bind ViewModel.SelectedItemType, Mode=TwoWay}"/>

@@ -3,7 +3,9 @@ using MyMediaCollection.Enums;
 using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MyMediaCollection.ViewModels
 {
@@ -26,8 +28,8 @@ namespace MyMediaCollection.ViewModels
             _navigationService = navigationService;
             _dataService = dataService;
 
-            SaveCommand = new RelayCommand(SaveItemAndReturn, CanSaveItem);
-            SaveAndContinueCommand = new RelayCommand(SaveItemAndContinue, CanSaveItem);
+            SaveCommand = new RelayCommand(async () => await SaveItemAndReturnAsync(), CanSaveItem);
+            SaveAndContinueCommand = new RelayCommand(async () => await SaveItemAndContinueAsync(), CanSaveItem);
             CancelCommand = new RelayCommand(Cancel);
 
             PopulateLists();
@@ -69,14 +71,14 @@ namespace MyMediaCollection.ViewModels
 
         public ICommand SaveCommand { get; set; }
 
-        private void SaveItemAndReturn()
+        private async Task SaveItemAndReturnAsync()
         {
-            SaveItem();
+            await SaveItemAsync();
 
             _navigationService.GoBack();
         }
 
-        private void SaveItem()
+        private async Task SaveItemAsync()
         {
             MediaItem item;
 
@@ -89,7 +91,7 @@ namespace MyMediaCollection.ViewModels
                 item.MediaType = (ItemType)Enum.Parse(typeof(ItemType), SelectedItemType);
                 item.MediumInfo = _dataService.GetMedium(SelectedMedium);
 
-                _dataService.UpdateItem(item);
+                await _dataService.UpdateItemAsync(item);
             }
             else
             {
@@ -101,7 +103,7 @@ namespace MyMediaCollection.ViewModels
                     MediumInfo = _dataService.GetMedium(SelectedMedium)
                 };
 
-                _dataService.AddItem(item);
+                await _dataService.AddItemAsync(item);
             }
         }
 
@@ -112,9 +114,9 @@ namespace MyMediaCollection.ViewModels
 
         public ICommand SaveAndContinueCommand { get; set; }
 
-        private void SaveItemAndContinue()
+        private async Task SaveItemAndContinueAsync()
         {
-            SaveItem();
+            await SaveItemAsync();
             _dataService.SelectedItemId = 0;
             _itemId = 0;
             ItemName = "";
@@ -126,6 +128,8 @@ namespace MyMediaCollection.ViewModels
 
         public ICommand CancelCommand { get; set; }
 
+        [MinLength(2, ErrorMessage ="Item name must be at least 2 characters.")]
+        [MaxLength(100, ErrorMessage ="Item name must be 100 characters or less.")]
         public string ItemName
         {
             get => _itemName;

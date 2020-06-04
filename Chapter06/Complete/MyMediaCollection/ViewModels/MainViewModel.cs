@@ -3,6 +3,7 @@ using MyMediaCollection.Enums;
 using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MyMediaCollection.ViewModels
 {
@@ -23,7 +24,7 @@ namespace MyMediaCollection.ViewModels
 
             PopulateData();
 
-            DeleteCommand = new RelayCommand(DeleteItem, CanDeleteItem);
+            DeleteCommand = new RelayCommand(async () => await DeleteItemAsync(), CanDeleteItem);
             AddEditCommand = new RelayCommand(AddOrEditItem);
         }
 
@@ -135,9 +136,9 @@ namespace MyMediaCollection.ViewModels
 
         public ICommand DeleteCommand { get; set; }
 
-        private void DeleteItem()
+        private async Task DeleteItemAsync()
         {
-            _dataService.DeleteItem(SelectedMediaItem);
+            await _dataService.DeleteItemAsync(SelectedMediaItem);
             Items.Remove(SelectedMediaItem);
             allItems.Remove(SelectedMediaItem);
         }

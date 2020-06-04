@@ -10,11 +10,12 @@ namespace MyMediaCollection.Interfaces
         Task InitializeDataAsync();
         IList<MediaItem> GetItems();
         MediaItem GetItem(int id);
-        int AddItem(MediaItem item);
-        void UpdateItem(MediaItem item);
-        void DeleteItem(MediaItem item);
+        Task<int> AddItemAsync(MediaItem item);
+        Task UpdateItemAsync(MediaItem item);
+        Task DeleteItemAsync(MediaItem item);
         IList<ItemType> GetItemTypes();
         Medium GetMedium(string name);
+        Medium GetMedium(int id);
         IList<Medium> GetMediums();
         IList<Medium> GetMediums(ItemType itemType);
         IList<LocationType> GetLocationTypes();

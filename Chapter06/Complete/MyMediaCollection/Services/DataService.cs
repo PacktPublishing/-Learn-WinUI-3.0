@@ -1,4 +1,6 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
+using Microsoft.Data.Sqlite;
 using MyMediaCollection.Enums;
 using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
@@ -13,13 +15,124 @@ namespace MyMediaCollection.Services
 {
     public class DataService : IDataService
     {
+        #region Private Data Members
+
         private List<MediaItem> _items;
         private IList<ItemType> _itemTypes;
         private IList<Medium> _mediums;
         private IList<LocationType> _locationTypes;
-        private const string DbName = "mediaData";
+        private const string DbName = "mediaCollectionData";
+
+        #endregion
+
+        #region Public Properties
 
         public int SelectedItemId { get; set; }
+
+        #endregion
+
+        #region Public Methods
+
+        public async Task<int> AddItemAsync(MediaItem item)
+        {
+            using (var db = await GetConnectionAsync())
+            {
+                db.Open();
+                item.Id =  await InsertMediaItemAsync(db, item);
+                db.Close();
+            }
+
+            _items.Add(item);
+
+            return item.Id;
+        }
+
+        public async Task UpdateItemAsync(MediaItem item)
+        {
+            using (var db = await GetConnectionAsync())
+            {
+                db.Open();
+                await UpdateMediaItemAsync(db, item);
+                db.Close();
+            }
+
+            _items[_items.FindIndex(i => i.Id == item.Id)] = item;
+        }
+
+        public async Task DeleteItemAsync(MediaItem item)
+        {
+            using (var db = await GetConnectionAsync())
+            {
+                db.Open();
+                await DeleteMediaItemAsync(db, item.Id);
+                db.Close();
+            }
+
+            _items.Remove(_items.FirstOrDefault(i => i.Id == item.Id));
+        }
+
+        public MediaItem GetItem(int id)
+        {
+            return _items.FirstOrDefault(i => i.Id == id);
+        }
+
+        public IList<MediaItem> GetItems()
+        {
+            return _items;
+        }
+
+        public IList<ItemType> GetItemTypes()
+        {
+            return _itemTypes;
+        }
+
+        public IList<Medium> GetMediums()
+        {
+            return _mediums;
+        }
+
+        public IList<Medium> GetMediums(ItemType itemType)
+        {
+            return _mediums.Where(m => m.MediaType == itemType).ToList();
+        }
+
+        public IList<LocationType> GetLocationTypes()
+        {
+            return _locationTypes;
+        }
+
+        public Medium GetMedium(string name)
+        {
+            return _mediums.FirstOrDefault(m => m.Name == name);
+        }
+
+        public Medium GetMedium(int id)
+        {
+            return _mediums.FirstOrDefault(m => m.Id == id);
+        }
+
+        public async Task InitializeDataAsync()
+        {
+            using (var db = await GetConnectionAsync())
+            {
+                db.Open();
+
+                await CreateMediumTableAsync(db);
+                await CreateMediaItemTableAsync(db);
+
+                SelectedItemId = -1;
+                PopulateItemTypes();
+                await PopulateMediumsAsync(db);
+                PopulateLocationTypes();
+                await PopulateItemsAsync(db);
+
+                db.Close();
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
 
         private async Task PopulateItemsAsync(SqliteConnection db)
         {
@@ -77,112 +190,6 @@ namespace MyMediaCollection.Services
             };
         }
 
-        public int AddItem(MediaItem item)
-        {
-            Task<SqliteConnection> connectionTask = GetConnectionAsync();
-            connectionTask.Wait();
-
-            using (var db = connectionTask.Result)
-            {
-                db.Open();
-
-                item.Id = Task.Run(async () => { return await InsertMediaItemAsync(db, item); }).Result;
-            }
-
-            _items.Add(item);
-
-            return item.Id;
-        }
-
-        public void UpdateItem(MediaItem item)
-        {
-            Task<SqliteConnection> connectionTask = GetConnectionAsync();
-            connectionTask.Wait();
-
-            using (var db = connectionTask.Result)
-            {
-                db.Open();
-
-                UpdateMediaItemAsync(db, item).Wait();
-            }
-
-            _items[_items.FindIndex(ind => ind.Equals(item))] = item;
-        }
-
-        public void DeleteItem(MediaItem item)
-        {
-            Task<SqliteConnection> connectionTask = GetConnectionAsync();
-            connectionTask.Wait();
-
-            using (var db = connectionTask.Result)
-            {
-                db.Open();
-
-                DeleteMediaItemAsync(db, item.Id).Wait();
-            }
-
-            _items.Remove(_items.FirstOrDefault(i => i.Id == item.Id));
-        }
-
-        public MediaItem GetItem(int id)
-        {
-            return _items.FirstOrDefault(i => i.Id == id);
-        }
-
-        public IList<MediaItem> GetItems()
-        {
-            return _items;
-        }
-
-        public IList<ItemType> GetItemTypes()
-        {
-            return _itemTypes;
-        }
-
-        public IList<Medium> GetMediums()
-        {
-            return _mediums;
-        }
-
-        public IList<Medium> GetMediums(ItemType itemType)
-        {
-            return _mediums.Where(m => m.MediaType == itemType).ToList();
-        }
-
-        public IList<LocationType> GetLocationTypes()
-        {
-            return _locationTypes;
-        }
-
-        public Medium GetMedium(string name)
-        {
-            return _mediums.FirstOrDefault(m => m.Name == name);
-        }
-
-        private Medium GetMedium(int id)
-        {
-            return _mediums.FirstOrDefault(m => m.Id == id);
-        }
-
-        public async Task InitializeDataAsync()
-        {
-            using (var db = await GetConnectionAsync())
-            {
-                db.Open();
-
-                await CreateMediumTableAsync(db);
-                await CreateMediaItemTableAsync(db);
-
-                SelectedItemId = -1;
-                PopulateItemTypes();
-                await PopulateMediumsAsync(db);
-                PopulateLocationTypes();
-                await PopulateItemsAsync(db);
-
-                db.Close();
-            }
-        }
-
         private async Task<SqliteConnection> GetConnectionAsync()
         {
             await ApplicationData.Current.RoamingFolder.CreateFileAsync(DbName, CreationCollisionOption.OpenIfExists);
@@ -195,7 +202,7 @@ namespace MyMediaCollection.Services
         {
             string tableCommand = "CREATE TABLE IF NOT " +
                 "EXISTS Mediums (Id INTEGER PRIMARY KEY, " +
-                "Name NVARCHAR(2048), " +
+                "Name NVARCHAR(30), " +
                 "MediumType INTEGER)";
 
             SqliteCommand createTable = new SqliteCommand(tableCommand, db);
@@ -207,7 +214,7 @@ namespace MyMediaCollection.Services
         {
             string tableCommand = "CREATE TABLE IF NOT " +
                 "EXISTS MediaItems (Id INTEGER PRIMARY KEY, " +
-                "Name NVARCHAR(2048), " +
+                "Name NVARCHAR(1000), " +
                 "ItemType INTEGER, " +
                 "MediumId INTEGER, " +
                 "LocationType INTEGER, " +
@@ -222,114 +229,79 @@ namespace MyMediaCollection.Services
 
         private async Task InsertMediumAsync(SqliteConnection db, Medium medium)
         {
-            SqliteCommand insertCommand = new SqliteCommand
-            {
-                Connection = db,
-                CommandText = "INSERT INTO Mediums VALUES (NULL, @Name, @MediumType);"
-            };
+            var newIds = await db.QueryAsync<long>(
+                @"INSERT INTO Mediums
+                    (Id, Name, MediumType)
+                    VALUES
+                    (null, @Name, @MediaType);
+                SELECT last_insert_rowid()", medium);
 
-            insertCommand.Parameters.AddWithValue("@Name", medium.Name);
-            insertCommand.Parameters.AddWithValue("@MediumType", (int)medium.MediaType);
-
-            await insertCommand.ExecuteNonQueryAsync();
+            medium.Id = (int)newIds.First();
         }
 
         private async Task<IList<Medium>> GetAllMediumsAsync(SqliteConnection db)
         {
-            IList<Medium> mediums = new List<Medium>();
-            var selectCommand = new SqliteCommand("SELECT Id, Name, MediumType from Mediums", db);
-            SqliteDataReader query = await selectCommand.ExecuteReaderAsync();
+            var mediums = await db.QueryAsync<Medium>("SELECT Id, Name, MediumType AS MediaType from Mediums");
 
-            while (query.Read())
-            {
-                var medium = new Medium
-                {
-                    Id = query.GetInt32(0),
-                    Name = query.GetString(1),
-                    MediaType = (ItemType)query.GetInt32(2)
-                };
-
-                mediums.Add(medium);
-            }
-
-            return mediums;
+            return mediums.ToList();
         }
 
         private async Task<List<MediaItem>> GetAllMediaItemsAsync(SqliteConnection db)
         {
-            var items = new List<MediaItem>();
-            var selectCommand = new SqliteCommand("SELECT Id, Name, ItemType, MediumId, LocationType from MediaItems", db);
-            SqliteDataReader query = await selectCommand.ExecuteReaderAsync();
+            var itemsResult = await db.QueryAsync<MediaItem, Medium, MediaItem>
+                            (
+                                @"SELECT
+                                    [MediaItems].[Id],
+                                    [MediaItems].[Name],
+                                    [MediaItems].[ItemType] AS MediaType,
+                                    [MediaItems].[LocationType] AS Location,
+                                    [Mediums].[Id],
+                                    [Mediums].[Name],
+                                    [Mediums].[MediumType] AS MediaType
+                                FROM
+                                    [MediaItems]
+                                JOIN
+                                    [Mediums]
+                                ON
+                                    [Mediums].[Id] = [MediaItems].[MediumId]",
+                                (item, medium) =>
+                                {
+                                    item.MediumInfo = medium;
 
-            while (query.Read())
-            {
-                var item = new MediaItem
-                {
-                    Id = query.GetInt32(0),
-                    Name = query.GetString(1),
-                    MediaType = (ItemType)query.GetInt32(2),
-                    MediumInfo = GetMedium(query.GetInt32(3)),
-                    Location = (LocationType)query.GetInt32(4)
-                };
+                                    return item;
+                                }
+                            );
 
-                items.Add(item);
-            }
-
-            return items;
+            return itemsResult.ToList();
         }
 
         private async Task<int> InsertMediaItemAsync(SqliteConnection db, MediaItem item)
         {
-            SqliteCommand insertCommand = new SqliteCommand
-            {
-                Connection = db,
-                CommandText = "INSERT INTO MediaItems VALUES (NULL, @Name, @ItemType, @MediumId, @LocationType);"
-            };
+            var newIds = await db.QueryAsync<long>(
+                @"INSERT INTO MediaItems
+                    (Id, Name, ItemType, MediumId, LocationType)
+                    VALUES
+                    (NULL, @Name, @MediaType, @MediumId, @Location);
+                SELECT last_insert_rowid()", item);
 
-            insertCommand.Parameters.AddWithValue("@Name", item.Name);
-            insertCommand.Parameters.AddWithValue("@ItemType", (int)item.MediaType);
-            insertCommand.Parameters.AddWithValue("@MediumId", item.MediumInfo.Id);
-            insertCommand.Parameters.AddWithValue("@LocationType", (int)item.Location);
+            item.Id = (int)newIds.First();
 
-            await insertCommand.ExecuteNonQueryAsync();
-
-            SqliteCommand getIdCommand = new SqliteCommand
-            {
-                Connection = db,
-                CommandText = "SELECT last_insert_rowid();"
-            };
-
-            return int.Parse((await getIdCommand.ExecuteScalarAsync()).ToString());
+            return item.Id;
         }
 
         private async Task UpdateMediaItemAsync(SqliteConnection db, MediaItem item)
         {
-            SqliteCommand updateCommand = new SqliteCommand
-            {
-                Connection = db,
-                CommandText = "UPDATE MediaItems SET Name = @Name, ItemType = @ItemType, MediumId = @MediumId, LocationType = @LocationType WHERE Id = @Id;"
-            };
-
-            updateCommand.Parameters.AddWithValue("@Id", item.Id);
-            updateCommand.Parameters.AddWithValue("@Name", item.Name);
-            updateCommand.Parameters.AddWithValue("@ItemType", (int)item.MediaType);
-            updateCommand.Parameters.AddWithValue("@MediumId", item.MediumInfo.Id);
-            updateCommand.Parameters.AddWithValue("@LocationType", (int)item.Location);
-
-            await updateCommand.ExecuteNonQueryAsync();
+            await db.QueryAsync(
+                @"UPDATE MediaItems
+                SET Name = @Name, ItemType = @MediaType, MediumId = @MediumId, LocationType = @Location
+                WHERE Id = @Id;", item);
         }
 
         private async Task DeleteMediaItemAsync(SqliteConnection db, int id)
         {
-            SqliteCommand updateCommand = new SqliteCommand
-            {
-                Connection = db,
-                CommandText = "DELETE FROM MediaItems WHERE Id = @Id;"
-            };
-
-            updateCommand.Parameters.AddWithValue("@Id", id);
-
-            await updateCommand.ExecuteNonQueryAsync();
+            await db.DeleteAsync<MediaItem>(new MediaItem { Id = id });
         }
+
+        #endregion
     }
 }
