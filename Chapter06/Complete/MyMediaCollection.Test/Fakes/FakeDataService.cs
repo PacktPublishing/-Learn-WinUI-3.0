@@ -3,6 +3,7 @@ using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace UnitTestProject2.Fakes
 {
@@ -14,15 +15,6 @@ namespace UnitTestProject2.Fakes
         private IList<LocationType> _locationTypes;
 
         public int SelectedItemId { get; set; }
-
-        public FakeDataService()
-        {
-            SelectedItemId = -1;
-            PopulateItemTypes();
-            PopulateMediums();
-            PopulateLocationTypes();
-            PopulateItems();
-        }
 
         private void PopulateItems()
         {
@@ -100,14 +92,6 @@ namespace UnitTestProject2.Fakes
             };
         }
 
-        public int AddItem(MediaItem item)
-        {
-            item.Id = _items.Max(i => i.Id) + 1;
-            _items.Add(item);
-
-            return item.Id;
-        }
-
         public MediaItem GetItem(int id)
         {
             return _items.FirstOrDefault(i => i.Id == id);
@@ -138,14 +122,41 @@ namespace UnitTestProject2.Fakes
             return _locationTypes;
         }
 
-        public void UpdateItem(MediaItem item)
+        public Medium GetMedium(string name)
+        {
+            return _mediums.FirstOrDefault(m => m.Name == name);
+        }
+
+        public async Task InitializeDataAsync()
+        {
+            SelectedItemId = -1;
+            PopulateItemTypes();
+            PopulateMediums();
+            PopulateLocationTypes();
+            PopulateItems();
+        }
+
+        public async Task<int> AddItemAsync(MediaItem item)
+        {
+            item.Id = _items.Max(i => i.Id) + 1;
+            _items.Add(item);
+
+            return item.Id;
+        }
+
+        public async Task UpdateItemAsync(MediaItem item)
         {
             _items[_items.FindIndex(ind => ind.Equals(item))] = item;
         }
 
-        public Medium GetMedium(string name)
+        public async Task DeleteItemAsync(MediaItem item)
         {
-            return _mediums.FirstOrDefault(m => m.Name == name);
+            _items.Remove(_items.FirstOrDefault(i => i.Id == item.Id));
+        }
+
+        public Medium GetMedium(int id)
+        {
+            return _mediums.FirstOrDefault(m => m.Id == id);
         }
     }
 }

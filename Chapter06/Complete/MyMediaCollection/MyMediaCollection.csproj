@@ -80,7 +80,7 @@
     <Compile Include="Model\LoanInformation.cs" />
     <Compile Include="Model\MediaItem.cs" />
     <Compile Include="Model\Medium.cs" />
-    <Compile Include="ViewModels\IValidatable.cs" />
+    <Compile Include="Interfaces\IValidatable.cs" />
     <Compile Include="ObservableCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DataService.cs" />
