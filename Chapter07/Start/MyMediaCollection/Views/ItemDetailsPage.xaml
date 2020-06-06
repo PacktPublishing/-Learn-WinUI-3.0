@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="MyMediaCollection.Views.ItemDetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyMediaCollection.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Item Details" FontSize="18" Margin="8"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Name:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" 
+                     HorizontalAlignment="Stretch" 
+                     Margin="8" 
+                     Text="{x:Bind ViewModel.ItemName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            
+            <TextBlock Text="Media Type:" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="8" ItemsSource="{x:Bind ViewModel.ItemTypes}" SelectedValue="{x:Bind ViewModel.SelectedItemType, Mode=TwoWay}"/>
+
+            <TextBlock Text="Medium:" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="8" ItemsSource="{x:Bind ViewModel.Mediums}" SelectedValue="{x:Bind ViewModel.SelectedMedium, Mode=TwoWay}"/>
+
+            <TextBlock Text="Location:" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Margin="8" ItemsSource="{x:Bind ViewModel.LocationTypes}" SelectedValue="{x:Bind ViewModel.SelectedLocation, Mode=TwoWay}"/>
+        </Grid>
+
+        <Grid Grid.Row="2" HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <SplitButton x:Name="SaveButton" Content="Save and Return" Margin="8,8,0,8" Command="{x:Bind ViewModel.SaveCommand}">
+                <SplitButton.Flyout>
+                    <Flyout>
+                        <Button Content="Save and Create New" Command="{x:Bind ViewModel.SaveAndContinueCommand}" Background="Transparent"/>
+                    </Flyout>
+                </SplitButton.Flyout>
+                <SplitButton.Resources>
+                    <TeachingTip x:Name="SavingTip"
+                                    Target="{x:Bind SaveButton}"
+                                    Title="Save and create new"
+                                    Subtitle="Use the dropdown button option to save your item and create another.">
+                    </TeachingTip>
+                </SplitButton.Resources>
+            </SplitButton>
+            <Button Content="Cancel" Grid.Column="1" Margin="8" Command="{x:Bind ViewModel.CancelCommand}"/>
+        </Grid>
+    </Grid>
+</Page>
