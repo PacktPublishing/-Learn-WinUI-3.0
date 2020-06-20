@@ -17,17 +17,11 @@ namespace MyMediaCollection.Services
     {
         #region Private Data Members
 
-        private List<MediaItem> _items;
+        private IList<MediaItem> _items;
         private IList<ItemType> _itemTypes;
         private IList<Medium> _mediums;
         private IList<LocationType> _locationTypes;
         private const string DbName = "mediaCollectionData";
-
-        #endregion
-
-        #region Public Properties
-
-        public int SelectedItemId { get; set; }
 
         #endregion
 
@@ -93,7 +87,9 @@ namespace MyMediaCollection.Services
 
         public IList<Medium> GetMediums(ItemType itemType)
         {
-            return _mediums.Where(m => m.MediaType == itemType).ToList();
+            return _mediums
+                .Where(m => m.MediaType == itemType)
+                .ToList();
         }
 
         public IList<LocationType> GetLocationTypes()

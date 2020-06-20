@@ -13,6 +13,8 @@ namespace MyMediaCollection.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+        protected INavigationService _navigationService;
+        protected IDataService _dataService;
 
         protected bool SetProperty<T>(ref T originalValue, T newValue, [CallerMemberName] string propertyName = null)
         {

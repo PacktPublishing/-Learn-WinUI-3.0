@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 using MyMediaCollection.ViewModels;
 
 namespace MyMediaCollection.Views
@@ -32,6 +33,18 @@ namespace MyMediaCollection.Views
             Window.Current.Title = "Item Details";
         }
 
-        public ItemDetailsViewModel ViewModel { get; } = (Application.Current as App)?.Container.GetService<ItemDetailsViewModel>();
+        public ItemDetailsViewModel ViewModel { get; } = (Application.Current as App).Container.GetService<ItemDetailsViewModel>();
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            var selectedItemId = (int)e.Parameter;
+
+            if (selectedItemId > 0)
+            {
+                ViewModel.InitializeItemDetailData(selectedItemId);
+            }
+        }
     }
 }

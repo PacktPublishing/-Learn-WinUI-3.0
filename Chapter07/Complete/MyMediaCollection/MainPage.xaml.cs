@@ -21,6 +21,6 @@ namespace MyMediaCollection
             Window.Current.Title = "Home";
         }
 
-        public MainViewModel ViewModel { get; } = (Application.Current as App)?.Container.GetService<MainViewModel>();
+        public MainViewModel ViewModel { get; } = (Application.Current as App).Container.GetService<MainViewModel>();
     }
 }
