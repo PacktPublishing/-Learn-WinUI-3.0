@@ -9,16 +9,13 @@ namespace MyMediaCollection.Services
 {
     public class DataService : IDataService
     {
-        private List<MediaItem> _items;
+        private IList<MediaItem> _items;
         private IList<ItemType> _itemTypes;
         private IList<Medium> _mediums;
         private IList<LocationType> _locationTypes;
 
-        public int SelectedItemId { get; set; }
-
         public DataService()
         {
-            SelectedItemId = -1;
             PopulateItemTypes();
             PopulateMediums();
             PopulateLocationTypes();
@@ -131,7 +128,9 @@ namespace MyMediaCollection.Services
 
         public IList<Medium> GetMediums(ItemType itemType)
         {
-            return _mediums.Where(m => m.MediaType == itemType).ToList();
+            return _mediums
+                .Where(m => m.MediaType == itemType)
+                .ToList();
         }
 
         public IList<LocationType> GetLocationTypes()
@@ -141,7 +140,19 @@ namespace MyMediaCollection.Services
 
         public void UpdateItem(MediaItem item)
         {
-            _items[_items.FindIndex(ind => ind.Equals(item))] = item;
+            var idx = -1;
+            var matchedItem =
+                (from x in _items
+                    let ind = idx++
+                    where x.Id == item.Id
+                    select ind).FirstOrDefault();
+
+            if (idx == -1)
+            {
+                throw new Exception("Unable to update item. Item not found in collection.");
+            }
+
+            _items[idx] = item;
         }
 
         public Medium GetMedium(string name)

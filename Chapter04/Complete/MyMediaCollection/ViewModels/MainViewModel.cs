@@ -1,19 +1,18 @@
 ﻿using Microsoft.UI.Xaml.Input;
-using MyMediaCollection.Enums;
 using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
+using System.Linq;
 
 namespace MyMediaCollection.ViewModels
 {
     public class MainViewModel : BindableBase
     {
         private string selectedMedium;
-        private TestObservableCollection<MediaItem> items;
+        private TestObservableCollection<MediaItem> items = new TestObservableCollection<MediaItem>();
         private TestObservableCollection<MediaItem> allItems;
         private TestObservableCollection<string> mediums;
         private MediaItem selectedMediaItem;
-        private INavigationService _navigationService;
-        private IDataService _dataService;
+        private const string AllMediums = "All";
 
         public MainViewModel(INavigationService navigationService, IDataService dataService)
         {
@@ -28,7 +27,7 @@ namespace MyMediaCollection.ViewModels
 
         public void PopulateData()
         {
-            items = new TestObservableCollection<MediaItem>();
+            items.Clear();
 
             foreach(var item in _dataService.GetItems())
             {
@@ -39,7 +38,7 @@ namespace MyMediaCollection.ViewModels
 
             mediums = new TestObservableCollection<string>
             {
-                "All"
+                AllMediums
             };
 
             foreach(var itemType in _dataService.GetItemTypes())
@@ -85,15 +84,13 @@ namespace MyMediaCollection.ViewModels
                 SetProperty(ref selectedMedium, value);
 
                 Items.Clear();
-
-                foreach (var item in allItems)
+                foreach (var item in from item in allItems
+                                     where string.IsNullOrWhiteSpace(selectedMedium) ||
+                                           selectedMedium == "All" ||
+                                           selectedMedium == item.MediaType.ToString()
+                                     select item)
                 {
-                    if (string.IsNullOrWhiteSpace(selectedMedium) ||
-                        selectedMedium == "All" ||
-                        selectedMedium == item.MediaType.ToString())
-                    {
-                        Items.Add(item);
-                    }
+                    Items.Add(item);
                 }
             }
         }
@@ -115,10 +112,11 @@ namespace MyMediaCollection.ViewModels
             var selectedItemId = -1;
 
             if (SelectedMediaItem != null)
+            {
                 selectedItemId = SelectedMediaItem.Id;
+            }
 
-            _dataService.SelectedItemId = selectedItemId;
-            _navigationService.NavigateTo("ItemDetailsPage");
+            _navigationService.NavigateTo("ItemDetailsPage", selectedItemId);
         }
 
         public void ListViewDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
