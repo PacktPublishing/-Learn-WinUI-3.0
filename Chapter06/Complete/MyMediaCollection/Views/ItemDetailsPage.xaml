@@ -8,6 +8,21 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <Style x:Key="AttributeTitleStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="AttributeValueStyle" TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="8"/>
+        </Style>
+        <Style x:Key="AttributeComboxValueStyle" TargetType="ComboBox">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="8"/>
+        </Style>
+    </Page.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -29,28 +44,20 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Name:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <TextBox Grid.Column="1" 
-                     HorizontalAlignment="Stretch" 
-                     Margin="8" 
-                     Text="{x:Bind ViewModel.ItemName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            
-            <TextBlock Text="Media Type:" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="8" ItemsSource="{x:Bind ViewModel.ItemTypes}" SelectedValue="{x:Bind ViewModel.SelectedItemType, Mode=TwoWay}"/>
+            <TextBlock Text="Name:" Style="{StaticResource AttributeTitleStyle}"/>
+            <TextBox Grid.Column="1" Style="{StaticResource AttributeValueStyle}" Text="{x:Bind ViewModel.ItemName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <TextBlock Text="Medium:" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="8" ItemsSource="{x:Bind ViewModel.Mediums}" SelectedValue="{x:Bind ViewModel.SelectedMedium, Mode=TwoWay}"/>
+            <TextBlock Text="Media Type:" Grid.Row="1" Style="{StaticResource AttributeTitleStyle}"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" Style="{StaticResource AttributeComboxValueStyle}" ItemsSource="{x:Bind ViewModel.ItemTypes}" SelectedValue="{x:Bind ViewModel.SelectedItemType, Mode=TwoWay}"/>
 
-            <TextBlock Text="Location:" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-            <ComboBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Margin="8" ItemsSource="{x:Bind ViewModel.LocationTypes}" SelectedValue="{x:Bind ViewModel.SelectedLocation, Mode=TwoWay}"/>
+            <TextBlock Text="Medium:" Grid.Row="2" Style="{StaticResource AttributeTitleStyle}"/>
+            <ComboBox Grid.Row="2" Grid.Column="1" Style="{StaticResource AttributeComboxValueStyle}" ItemsSource="{x:Bind ViewModel.Mediums}" SelectedValue="{x:Bind ViewModel.SelectedMedium, Mode=TwoWay}"/>
+
+            <TextBlock Text="Location:" Grid.Row="3" Style="{StaticResource AttributeTitleStyle}"/>
+            <ComboBox Grid.Row="3" Grid.Column="1" Style="{StaticResource AttributeComboxValueStyle}" ItemsSource="{x:Bind ViewModel.LocationTypes}" SelectedValue="{x:Bind ViewModel.SelectedLocation, Mode=TwoWay}"/>
         </Grid>
 
-        <Grid Grid.Row="2" HorizontalAlignment="Right">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
             <SplitButton x:Name="SaveButton" Content="Save and Return" Margin="8,8,0,8" Command="{x:Bind ViewModel.SaveCommand}">
                 <SplitButton.Flyout>
                     <Flyout>
@@ -65,7 +72,7 @@
                     </TeachingTip>
                 </SplitButton.Resources>
             </SplitButton>
-            <Button Content="Cancel" Grid.Column="1" Margin="8" Command="{x:Bind ViewModel.CancelCommand}"/>
-        </Grid>
+            <Button Content="Cancel" Margin="8" Command="{x:Bind ViewModel.CancelCommand}"/>
+        </StackPanel>
     </Grid>
 </Page>

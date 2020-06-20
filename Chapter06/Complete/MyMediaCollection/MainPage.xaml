@@ -9,10 +9,6 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.Resources>
-        
-    </Page.Resources>
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -69,9 +65,15 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Command="{x:Bind ViewModel.AddEditCommand}" Content="Add/Edit Item" Margin="8,8,0,8"/>
-            <Button Command="{x:Bind ViewModel.DeleteCommand}" Content="Delete Item" Grid.Column="1" Margin="8"/>
+        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button Command="{x:Bind ViewModel.AddEditCommand}"
+                    Content="Add/Edit Item"
+                    Margin="8,8,0,8"/>
+            <Button Command="{x:Bind ViewModel.DeleteCommand}"
+                    Content="Delete Item"
+                    Margin="8"/>
         </StackPanel>
     </Grid>
 </Page>

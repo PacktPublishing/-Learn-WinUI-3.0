@@ -19,6 +19,5 @@ namespace MyMediaCollection.Interfaces
         IList<Medium> GetMediums();
         IList<Medium> GetMediums(ItemType itemType);
         IList<LocationType> GetLocationTypes();
-        int SelectedItemId { get; set; }
     }
 }

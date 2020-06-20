@@ -20,13 +20,12 @@ namespace MyMediaCollection.Services
 
         public void Configure(string page, Type type)
         {
-            if (_pages.ContainsKey(page))
-                throw new ArgumentException($"The {page} page is already registered.");
-
             if (_pages.Values.Any(v => v == type))
+            {
                 throw new ArgumentException($"The {type.Name} view has already been registered under another name.");
-            
-            _pages.Add(page, type);
+            }
+
+            _pages[page] = type;
         }
 
         /// <summary>
