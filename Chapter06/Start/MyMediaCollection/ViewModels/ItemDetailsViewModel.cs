@@ -9,8 +9,6 @@ namespace MyMediaCollection.ViewModels
 {
     public class ItemDetailsViewModel : BindableBase
     {
-        private INavigationService _navigationService;
-        private IDataService _dataService;
         private TestObservableCollection<string> _locationTypes = new TestObservableCollection<string>();
         private TestObservableCollection<string> _mediums = new TestObservableCollection<string>();
         private TestObservableCollection<string> _itemTypes = new TestObservableCollection<string>();
@@ -20,6 +18,7 @@ namespace MyMediaCollection.ViewModels
         private string _selectedItemType;
         private string _selectedLocation;
         private bool _isDirty;
+        private int _selectedItemId = -1;
 
         public ItemDetailsViewModel(INavigationService navigationService, IDataService dataService)
         {
@@ -29,18 +28,22 @@ namespace MyMediaCollection.ViewModels
             SaveCommand = new RelayCommand(SaveItemAndReturn, CanSaveItem);
             SaveAndContinueCommand = new RelayCommand(SaveItemAndContinue, CanSaveItem);
             CancelCommand = new RelayCommand(Cancel);
+        }
 
+        public void InitializeItemDetailData(int selectedItemId)
+        {
+            _selectedItemId = selectedItemId;
             PopulateLists();
-            PopulateExistingItem(dataService);
+            PopulateExistingItem(_dataService);
 
             IsDirty = false;
         }
 
         private void PopulateExistingItem(IDataService dataService)
         {
-            if (_dataService.SelectedItemId > 0)
+            if (_selectedItemId > 0)
             {
-                var item = _dataService.GetItem(_dataService.SelectedItemId);
+                var item = _dataService.GetItem(_selectedItemId);
                 Mediums.Clear();
 
                 foreach (string medium in dataService.GetMediums(item.MediaType).Select(m => m.Name))

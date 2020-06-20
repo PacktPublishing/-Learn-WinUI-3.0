@@ -15,6 +15,6 @@ namespace MyMediaCollection
             this.InitializeComponent();
         }
 
-        public MainViewModel ViewModel { get; } = (Application.Current as App)?.Container.GetService<MainViewModel>();
+        public MainViewModel ViewModel { get; } = (Application.Current as App).Container.GetService<MainViewModel>();
     }
 }

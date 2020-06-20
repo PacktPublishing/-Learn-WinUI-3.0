@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI.Xaml.Data;
+using MyMediaCollection.Interfaces;
 using System.Runtime.CompilerServices;
 
 namespace MyMediaCollection.ViewModels
@@ -6,6 +7,8 @@ namespace MyMediaCollection.ViewModels
     public class BindableBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        protected INavigationService _navigationService;
+        protected IDataService _dataService;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
