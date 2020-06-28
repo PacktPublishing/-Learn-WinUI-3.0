@@ -50,7 +50,19 @@ namespace MyMediaCollection.Services
                 db.Close();
             }
 
-            _items[_items.FindIndex(i => i.Id == item.Id)] = item;
+            var idx = -1;
+            var matchedItem =
+                (from x in _items
+                 let ind = idx++
+                 where x.Id == item.Id
+                 select ind).FirstOrDefault();
+
+            if (idx == -1)
+            {
+                throw new Exception("Unable to update item. Item not found in collection.");
+            }
+
+            _items[idx] = item;
         }
 
         public async Task DeleteItemAsync(MediaItem item)
@@ -116,7 +128,6 @@ namespace MyMediaCollection.Services
                 await CreateMediumTableAsync(db);
                 await CreateMediaItemTableAsync(db);
 
-                SelectedItemId = -1;
                 PopulateItemTypes();
                 await PopulateMediumsAsync(db);
                 PopulateLocationTypes();

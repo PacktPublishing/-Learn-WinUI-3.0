@@ -1,0 +1,28 @@
+﻿<Window
+    x:Class="HardwareSupplies.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HardwareSupplies"
+    xmlns:wct="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <wct:HeaderedContentControl Header="Hardware Inventory"
+                                    Margin="6" x:Name="headerPanel">
+            <wct:DropShadowPanel BlurRadius="8"
+                                    ShadowOpacity="1"
+                                    OffsetX="2"
+                                    OffsetY="2"
+                                    Color="Black"
+                                    IsMasked="True"
+                                    Margin="6">
+                <wct:DataGrid ItemsSource="{x:Bind HardwareItems}"
+                                AutoGenerateColumns="True"
+                                Background="AliceBlue"
+                                AlternatingRowBackground="LightBlue"/>
+            </wct:DropShadowPanel>
+        </wct:HeaderedContentControl>
+    </Grid>
+</Window>
