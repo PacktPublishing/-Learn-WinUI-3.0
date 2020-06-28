@@ -120,7 +120,6 @@ namespace MyMediaCollection.ViewModels
         private async Task SaveItemAndContinueAsync()
         {
             await SaveItemAsync();
-            _dataService.SelectedItemId = 0;
             _itemId = 0;
             ItemName = "";
             SelectedMedium = null;
