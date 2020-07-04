@@ -1,6 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Input;
 using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,17 +21,17 @@ namespace MyMediaCollection.ViewModels
             _navigationService = navigationService;
             _dataService = dataService;
 
-            PopulateData();
+            PopulateDataAsync().Wait();
 
             DeleteCommand = new RelayCommand(async () => await DeleteItemAsync(), CanDeleteItem);
             AddEditCommand = new RelayCommand(AddOrEditItem);
         }
 
-        public void PopulateData()
+        public async Task PopulateDataAsync()
         {
             items.Clear();
 
-            foreach(var item in _dataService.GetItems())
+            foreach(var item in await _dataService.GetItemsAsync())
             {
                 items.Add(item);
             }
@@ -86,7 +87,7 @@ namespace MyMediaCollection.ViewModels
 
                 Items.Clear();
                 allItems.Clear();
-                var items = _dataService.GetItems();
+                IList<MediaItem> items = _dataService.GetItemsAsync().Result;
 
                 foreach (var item in items)
                 {

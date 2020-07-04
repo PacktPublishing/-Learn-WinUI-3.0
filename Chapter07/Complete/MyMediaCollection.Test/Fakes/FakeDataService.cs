@@ -92,12 +92,12 @@ namespace UnitTestProject2.Fakes
             };
         }
 
-        public MediaItem GetItem(int id)
+        public async Task<MediaItem> GetItemAsync(int id)
         {
             return _items.FirstOrDefault(i => i.Id == id);
         }
 
-        public IList<MediaItem> GetItems()
+        public async Task<IList<MediaItem>> GetItemsAsync()
         {
             return _items;
         }

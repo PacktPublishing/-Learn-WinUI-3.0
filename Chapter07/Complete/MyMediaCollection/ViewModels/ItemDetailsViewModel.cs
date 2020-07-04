@@ -27,25 +27,27 @@ namespace MyMediaCollection.ViewModels
             _navigationService = navigationService;
             _dataService = dataService;
 
-            SaveCommand = new RelayCommand(async () => await SaveItemAndReturnAsync(), CanSaveItem);
-            SaveAndContinueCommand = new RelayCommand(async () => await SaveItemAndContinueAsync(), CanSaveItem);
             CancelCommand = new RelayCommand(Cancel);
         }
 
-        public void InitializeItemDetailData(int selectedItemId)
+        public async Task InitializeItemDetailDataAsync(int selectedItemId)
         {
             _selectedItemId = selectedItemId;
             PopulateLists();
-            PopulateExistingItem(_dataService);
+
+            if (_selectedItemId > 0)
+            {
+                await PopulateExistingItemAsync(_dataService);
+            }
 
             IsDirty = false;
         }
 
-        private void PopulateExistingItem(IDataService dataService)
+        private async Task PopulateExistingItemAsync(IDataService dataService)
         {
             if (_selectedItemId > 0)
             {
-                var item = _dataService.GetItem(_selectedItemId);
+                var item = await _dataService.GetItemAsync(_selectedItemId);
                 Mediums.Clear();
 
                 foreach (string medium in dataService.GetMediums(item.MediaType).Select(m => m.Name))
@@ -72,9 +74,7 @@ namespace MyMediaCollection.ViewModels
             Mediums = new TestObservableCollection<string>();
         }
 
-        public ICommand SaveCommand { get; set; }
-
-        private async Task SaveItemAndReturnAsync()
+        public async Task SaveItemAndReturnAsync()
         {
             await SaveItemAsync();
 
@@ -87,7 +87,7 @@ namespace MyMediaCollection.ViewModels
 
             if (_itemId > 0)
             {
-                item = _dataService.GetItem(_itemId);
+                item = await _dataService.GetItemAsync(_itemId);
 
                 item.Name = ItemName;
                 item.Location = (LocationType)Enum.Parse(typeof(LocationType), SelectedLocation);
@@ -110,14 +110,7 @@ namespace MyMediaCollection.ViewModels
             }
         }
 
-        private bool CanSaveItem()
-        {
-            return IsDirty;
-        }
-
-        public ICommand SaveAndContinueCommand { get; set; }
-
-        private async Task SaveItemAndContinueAsync()
+        public async Task SaveItemAndContinueAsync()
         {
             await SaveItemAsync();
             _itemId = 0;
@@ -197,11 +190,7 @@ namespace MyMediaCollection.ViewModels
             get => _isDirty; 
             set
             {
-                if (_isDirty == value) return;
-
-                _isDirty = value;
-                ((RelayCommand)SaveCommand).RaiseCanExecuteChanged();
-                ((RelayCommand)SaveAndContinueCommand).RaiseCanExecuteChanged();
+                SetProperty(ref _isDirty, value, nameof(IsDirty));
             }
         }
 

@@ -34,16 +34,13 @@ namespace MyMediaCollection.Views
 
         public ItemDetailsViewModel ViewModel { get; } = (Application.Current as App).Container.GetService<ItemDetailsViewModel>();
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
             var selectedItemId = (int)e.Parameter;
 
-            if (selectedItemId > 0)
-            {
-                ViewModel.InitializeItemDetailData(selectedItemId);
-            }
+            await ViewModel.InitializeItemDetailDataAsync(selectedItemId);
         }
     }
 }

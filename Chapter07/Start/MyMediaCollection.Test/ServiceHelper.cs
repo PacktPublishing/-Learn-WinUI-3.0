@@ -44,7 +44,7 @@ namespace UnitTestProject2
 
             var dataService = new Mock<IDataService>();
             dataService.Setup(s => s.GetMediums()).Returns(mediums);
-            dataService.Setup(s => s.GetItems()).Returns(new List<MediaItem>());
+            dataService.Setup(s => s.GetItemsAsync()).Returns(new Task<IList<MediaItem>>(() => { return new List<MediaItem>(); }));
             dataService.Setup(s => s.GetItemTypes()).Returns(itemTypes);
             dataService.SetupAllProperties();
 

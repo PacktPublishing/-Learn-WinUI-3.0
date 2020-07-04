@@ -114,7 +114,7 @@ namespace MyMediaCollection
             navigationService.Configure(nameof(ItemDetailsPage), typeof(ItemDetailsPage));
 
             services.AddSingleton<INavigationService>(navigationService);
-            services.AddSingleton<IDataService, DataService>();
+            services.AddSingleton<IDataService, SqliteDataService>();
             services.AddTransient<MainViewModel>();
             services.AddTransient<ItemDetailsViewModel>();
 
