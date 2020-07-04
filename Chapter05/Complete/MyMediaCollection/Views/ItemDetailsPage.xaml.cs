@@ -16,13 +16,12 @@ namespace MyMediaCollection.Views
             this.InitializeComponent();
 
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            string haveExplainedSaveSetting = localSettings.Values["ItemDetailsHaveExplainedSave"] as string;
-            bool haveExplainedSave = bool.TryParse(haveExplainedSaveSetting, out bool result);
+            string haveExplainedSaveSetting = localSettings.Values[nameof(SavingTip)] as string;
 
-            if (!result || !haveExplainedSave)
+            if (!bool.TryParse(haveExplainedSaveSetting, out bool result) || !result)
             {
                 SavingTip.IsOpen = true;
-                localSettings.Values["ItemDetailsHaveExplainedSave"] = "true";
+                localSettings.Values[nameof(SavingTip)] = "true";
             }
         }
 

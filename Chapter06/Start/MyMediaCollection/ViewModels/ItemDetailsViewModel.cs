@@ -25,8 +25,6 @@ namespace MyMediaCollection.ViewModels
             _navigationService = navigationService;
             _dataService = dataService;
 
-            SaveCommand = new RelayCommand(SaveItemAndReturn, CanSaveItem);
-            SaveAndContinueCommand = new RelayCommand(SaveItemAndContinue, CanSaveItem);
             CancelCommand = new RelayCommand(Cancel);
         }
 
@@ -70,9 +68,7 @@ namespace MyMediaCollection.ViewModels
             Mediums = new TestObservableCollection<string>();
         }
 
-        public ICommand SaveCommand { get; set; }
-
-        private void SaveItemAndReturn()
+        public void SaveItemAndReturn()
         {
             SaveItem();
 
@@ -108,17 +104,9 @@ namespace MyMediaCollection.ViewModels
             }
         }
 
-        private bool CanSaveItem()
-        {
-            return IsDirty;
-        }
-
-        public ICommand SaveAndContinueCommand { get; set; }
-
-        private void SaveItemAndContinue()
+        public void SaveItemAndContinue()
         {
             SaveItem();
-            _dataService.SelectedItemId = 0;
             _itemId = 0;
             ItemName = "";
             SelectedMedium = null;
@@ -194,11 +182,7 @@ namespace MyMediaCollection.ViewModels
             get => _isDirty; 
             set
             {
-                if (_isDirty == value) return;
-
-                _isDirty = value;
-                ((RelayCommand)SaveCommand).RaiseCanExecuteChanged();
-                ((RelayCommand)SaveAndContinueCommand).RaiseCanExecuteChanged();
+                SetProperty(ref _isDirty, value, nameof(IsDirty));
             }
         }
 
