@@ -28,35 +28,25 @@ namespace MyMediaCollection.Services
 
         public async Task<int> AddItemAsync(MediaItem item)
         {
-            int id;
-
-            using (var db = await GetConnectionAsync())
+            using (var db = await GetOpenConnectionAsync())
             {
-                db.Open();
-                id = await InsertMediaItemAsync(db, item);
-                db.Close();
+                return await InsertMediaItemAsync(db, item);
             }
-
-            return id;
         }
 
         public async Task UpdateItemAsync(MediaItem item)
         {
-            using (var db = await GetConnectionAsync())
+            using (var db = await GetOpenConnectionAsync())
             {
-                db.Open();
                 await UpdateMediaItemAsync(db, item);
-                db.Close();
             }
         }
 
         public async Task DeleteItemAsync(MediaItem item)
         {
-            using (var db = await GetConnectionAsync())
+            using (var db = await GetOpenConnectionAsync())
             {
-                db.Open();
                 await DeleteMediaItemAsync(db, item.Id);
-                db.Close();
             }
         }
 
@@ -64,11 +54,9 @@ namespace MyMediaCollection.Services
         {
             IList<MediaItem> mediaItems;
 
-            using (var db = await GetConnectionAsync())
+            using (var db = await GetOpenConnectionAsync())
             {
-                db.Open();
                 mediaItems = await GetAllMediaItemsAsync(db);
-                db.Close();
             }
 
             // Filter the list to get the item for our Id.
@@ -77,16 +65,10 @@ namespace MyMediaCollection.Services
 
         public async Task<IList<MediaItem>> GetItemsAsync()
         {
-            IList<MediaItem> mediaItems;
-
-            using (var db = await GetConnectionAsync())
+            using (var db = await GetOpenConnectionAsync())
             {
-                db.Open();
-                mediaItems = await GetAllMediaItemsAsync(db);
-                db.Close();
+                return await GetAllMediaItemsAsync(db);
             }
-
-            return mediaItems;
         }
 
         public IList<ItemType> GetItemTypes()
@@ -123,18 +105,14 @@ namespace MyMediaCollection.Services
 
         public async Task InitializeDataAsync()
         {
-            using (var db = await GetConnectionAsync())
+            using (var db = await GetOpenConnectionAsync())
             {
-                db.Open();
-
                 await CreateMediumTableAsync(db);
                 await CreateMediaItemTableAsync(db);
 
                 PopulateItemTypes();
                 await PopulateMediumsAsync(db);
                 PopulateLocationTypes();
-
-                db.Close();
             }
         }
 
@@ -193,12 +171,14 @@ namespace MyMediaCollection.Services
             };
         }
 
-        private async Task<SqliteConnection> GetConnectionAsync()
+        private async Task<SqliteConnection> GetOpenConnectionAsync()
         {
             await ApplicationData.Current.RoamingFolder.CreateFileAsync(DbName, CreationCollisionOption.OpenIfExists).AsTask().ConfigureAwait(false);
             string dbPath = Path.Combine(ApplicationData.Current.RoamingFolder.Path, DbName);
+            var cn = new SqliteConnection($"Filename={dbPath}");
+            cn.Open();
 
-            return new SqliteConnection($"Filename={dbPath}");
+            return cn;
         }
 
         private async Task CreateMediumTableAsync(SqliteConnection db)
