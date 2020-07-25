@@ -1,0 +1,22 @@
+﻿<Window x:Class="XamlIslandsSample.WpfCore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XamlIslandsSample.WpfCore"
+        xmlns:xaml="clr-namespace:Microsoft.Toolkit.Wpf.UI.XamlHost;assembly=Microsoft.Toolkit.Wpf.UI.XamlHost"
+        mc:Ignorable="d"
+        Title="WPF Host" Height="600" Width="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <xaml:WindowsXamlHost x:Name="xamlHost"
+                                InitialTypeName="XamlIslandsSample.UwpApp.EntryForm"/>
+        <Button x:Name="quantityButton"
+                Grid.Row="1"
+                Content="Get Total Entries"
+                Click="quantityButton_Click"/>
+    </Grid>
+</Window>
