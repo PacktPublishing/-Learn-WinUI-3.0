@@ -2,6 +2,7 @@
 using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,9 +11,9 @@ namespace MyMediaCollection.ViewModels
     public class MainViewModel : BindableBase
     {
         private string selectedMedium;
-        private TestObservableCollection<MediaItem> items = new TestObservableCollection<MediaItem>();
-        private TestObservableCollection<MediaItem> allItems;
-        private TestObservableCollection<string> mediums;
+        private ObservableCollection<MediaItem> items = new ObservableCollection<MediaItem>();
+        private ObservableCollection<MediaItem> allItems;
+        private ObservableCollection<string> mediums;
         private MediaItem selectedMediaItem;
         private const string AllMediums = "All";
 
@@ -36,9 +37,9 @@ namespace MyMediaCollection.ViewModels
                 items.Add(item);
             }
 
-            allItems = new TestObservableCollection<MediaItem>(Items);
+            allItems = new ObservableCollection<MediaItem>(Items);
 
-            mediums = new TestObservableCollection<string>
+            mediums = new ObservableCollection<string>
             {
                 AllMediums
             };
@@ -51,7 +52,7 @@ namespace MyMediaCollection.ViewModels
             selectedMedium = Mediums[0];
         }
 
-        public TestObservableCollection<MediaItem> Items
+        public ObservableCollection<MediaItem> Items
         {
             get
             {
@@ -63,7 +64,7 @@ namespace MyMediaCollection.ViewModels
             }
         }
 
-        public TestObservableCollection<string> Mediums
+        public ObservableCollection<string> Mediums
         {
             get
             {

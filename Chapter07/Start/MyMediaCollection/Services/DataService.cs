@@ -1,15 +1,10 @@
-﻿using Dapper;
-using Dapper.Contrib.Extensions;
-using Microsoft.Data.Sqlite;
-using MyMediaCollection.Enums;
+﻿using MyMediaCollection.Enums;
 using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Storage;
 
 namespace MyMediaCollection.Services
 {
