@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.UI.Xaml.Controls;
-using Windows.UI.Popups;
+﻿using Microsoft.UI.Xaml.Controls;
 using MyMediaCollection.ViewModels;
 
 namespace MyMediaCollection

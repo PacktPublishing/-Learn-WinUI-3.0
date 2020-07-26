@@ -2,14 +2,15 @@
 using MyMediaCollection.Enums;
 using MyMediaCollection.Model;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MyMediaCollection.ViewModels
 {
     public class MainViewModel : BindableBase
     {
         private string selectedMedium;
-        private TestObservableCollection<MediaItem> items;
-        private TestObservableCollection<MediaItem> allItems;
+        private ObservableCollection<MediaItem> items;
+        private ObservableCollection<MediaItem> allItems;
         private IList<string> mediums;
         private MediaItem selectedMediaItem;
         private int additionalItemCount = 1;
@@ -51,14 +52,14 @@ namespace MyMediaCollection.ViewModels
                 MediumInfo = new Medium { Id = 3, MediaType = ItemType.Video, Name = "Blu Ray" }
             };
 
-            items = new TestObservableCollection<MediaItem>
+            items = new ObservableCollection<MediaItem>
             {
                 cd,
                 book,
                 bluRay
             };
 
-            allItems = new TestObservableCollection<MediaItem>(Items);
+            allItems = new ObservableCollection<MediaItem>(Items);
 
             mediums = new List<string>
             {
@@ -71,7 +72,7 @@ namespace MyMediaCollection.ViewModels
             selectedMedium = Mediums[0];
         }
 
-        public TestObservableCollection<MediaItem> Items
+        public ObservableCollection<MediaItem> Items
         {
             get
             {
