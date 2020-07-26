@@ -4,14 +4,15 @@ using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
 using System;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace MyMediaCollection.ViewModels
 {
     public class ItemDetailsViewModel : BindableBase
     {
-        private TestObservableCollection<string> _locationTypes = new TestObservableCollection<string>();
-        private TestObservableCollection<string> _mediums = new TestObservableCollection<string>();
-        private TestObservableCollection<string> _itemTypes = new TestObservableCollection<string>();
+        private ObservableCollection<string> _locationTypes = new ObservableCollection<string>();
+        private ObservableCollection<string> _mediums = new ObservableCollection<string>();
+        private ObservableCollection<string> _itemTypes = new ObservableCollection<string>();
         private int _itemId;
         private string _itemName;
         private string _selectedMedium;
@@ -65,7 +66,7 @@ namespace MyMediaCollection.ViewModels
             foreach (string lType in Enum.GetNames(typeof(LocationType)))
                 LocationTypes.Add(lType);
 
-            Mediums = new TestObservableCollection<string>();
+            Mediums = new ObservableCollection<string>();
         }
 
         public void SaveItemAndReturn()
@@ -173,9 +174,9 @@ namespace MyMediaCollection.ViewModels
             }
         }
 
-        public TestObservableCollection<string> LocationTypes { get => _locationTypes; set => SetProperty(ref _locationTypes, value, nameof(LocationTypes)); }
-        public TestObservableCollection<string> Mediums { get => _mediums; set => SetProperty(ref _mediums, value, nameof(Mediums)); }
-        public TestObservableCollection<string> ItemTypes { get => _itemTypes; set => SetProperty(ref _itemTypes, value, nameof(ItemTypes)); }
+        public ObservableCollection<string> LocationTypes { get => _locationTypes; set => SetProperty(ref _locationTypes, value, nameof(LocationTypes)); }
+        public ObservableCollection<string> Mediums { get => _mediums; set => SetProperty(ref _mediums, value, nameof(Mediums)); }
+        public ObservableCollection<string> ItemTypes { get => _itemTypes; set => SetProperty(ref _itemTypes, value, nameof(ItemTypes)); }
 
         public bool IsDirty
         {
