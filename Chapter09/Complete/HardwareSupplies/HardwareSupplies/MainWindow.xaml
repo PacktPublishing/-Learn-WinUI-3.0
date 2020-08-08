@@ -12,16 +12,15 @@
         <wct:HeaderedContentControl Header="Hardware Inventory"
                                     Margin="6" x:Name="headerPanel">
             <wct:DropShadowPanel BlurRadius="8"
-                                    ShadowOpacity="1"
-                                    OffsetX="2"
-                                    OffsetY="2"
-                                    Color="Black"
-                                    IsMasked="True"
-                                    Margin="6">
+                                 ShadowOpacity="1"
+                                 OffsetX="2"
+                                 OffsetY="2"
+                                 Color="Gray"
+                                 IsMasked="True"
+                                 Margin="6">
                 <wct:DataGrid ItemsSource="{x:Bind HardwareItems}"
-                                AutoGenerateColumns="True"
-                                Background="AliceBlue"
-                                AlternatingRowBackground="LightBlue"/>
+                              AutoGenerateColumns="True"
+                              Background="{ThemeResource SystemControlBackgroundAltHighBrush}"/>
             </wct:DropShadowPanel>
         </wct:HeaderedContentControl>
     </Grid>
