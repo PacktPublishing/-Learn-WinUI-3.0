@@ -13,7 +13,9 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="urlTextBox" KeyUp="urlTextBox_KeyUp"/>
+        <TextBox x:Name="urlTextBox"
+                 KeyUp="urlTextBox_KeyUp"
+                 Text="{x:Bind UrlSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Button x:Name="reloadButton"
                 Grid.Column="1"
                 Click="reloadButton_Click">

@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WebViewBrowser.Bus.ViewModels
+﻿namespace WebViewBrowser.Bus.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private string _urlSource;
-
-        public MainViewModel()
-        {
-            UrlSource = "https://www.packtpub.com/";
-        }
+        private string _urlSource = "https://www.packtpub.com/";
 
         public string UrlSource
         {

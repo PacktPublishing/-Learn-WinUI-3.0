@@ -18,7 +18,7 @@
                                 ReloadClicked="browserToolbar_ReloadClicked"
                                 UrlEntered="browserToolbar_UrlEntered"/>
         <WebView2 x:Name="mainWebView" 
-                    Grid.Row="1"/>
+                    Grid.Row="1" />
         <!--<WebView2 Source="{x:Bind ViewModel.UrlSource}"/>-->
     </Grid>
 </Window>

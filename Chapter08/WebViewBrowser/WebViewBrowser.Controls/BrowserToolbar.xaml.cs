@@ -25,7 +25,6 @@ namespace WebViewBrowser.Controls
             if (e.Key == Windows.System.VirtualKey.Enter &&
                 !string.IsNullOrWhiteSpace(urlTextBox.Text))
             {
-                UrlSource = new System.Uri(urlTextBox.Text);
                 UrlEntered?.Invoke(this, new RoutedEventArgs());
             }
         }
