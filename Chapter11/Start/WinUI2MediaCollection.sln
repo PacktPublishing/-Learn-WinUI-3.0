@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30404.54
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUI2MediaCollection", "WinUI2MediaCollection\WinUI2MediaCollection.csproj", "{EA6DFD39-141C-4875-99D9-2747B53EE86B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Debug|ARM.ActiveCfg = Debug|ARM
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Debug|ARM.Build.0 = Debug|ARM
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Debug|ARM.Deploy.0 = Debug|ARM
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Debug|ARM64.Build.0 = Debug|ARM64
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Debug|x64.ActiveCfg = Debug|x64
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Debug|x64.Build.0 = Debug|x64
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Debug|x64.Deploy.0 = Debug|x64
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Debug|x86.ActiveCfg = Debug|x86
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Debug|x86.Build.0 = Debug|x86
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Debug|x86.Deploy.0 = Debug|x86
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Release|ARM.ActiveCfg = Release|ARM
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Release|ARM.Build.0 = Release|ARM
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Release|ARM.Deploy.0 = Release|ARM
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Release|ARM64.ActiveCfg = Release|ARM64
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Release|ARM64.Build.0 = Release|ARM64
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Release|ARM64.Deploy.0 = Release|ARM64
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Release|x64.ActiveCfg = Release|x64
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Release|x64.Build.0 = Release|x64
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Release|x64.Deploy.0 = Release|x64
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Release|x86.ActiveCfg = Release|x86
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Release|x86.Build.0 = Release|x86
+		{EA6DFD39-141C-4875-99D9-2747B53EE86B}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B5F3E09-6642-44F3-860D-E8094E6D103A}
+	EndGlobalSection
+EndGlobal
