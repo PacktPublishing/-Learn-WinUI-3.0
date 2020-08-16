@@ -68,8 +68,7 @@
         </ListView>
 
         <Border Grid.Row="2" BorderBrush="{ThemeResource SystemAccentColor}" BorderThickness="0,1,0,0" Margin="4,0,4,0">
-            <StackPanel Grid.Row="2"
-                        HorizontalAlignment="Right"
+            <StackPanel HorizontalAlignment="Right"
                         Orientation="Horizontal">
                 <Button Command="{x:Bind ViewModel.AddEditCommand}"
                         Content="Add/Edit Item"
