@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30404.54
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTasksHost", "BlazorTasksHost\BlazorTasksHost.csproj", "{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}.Debug|x64.ActiveCfg = Debug|x64
+		{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}.Debug|x64.Build.0 = Debug|x64
+		{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}.Debug|x64.Deploy.0 = Debug|x64
+		{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}.Debug|x86.ActiveCfg = Debug|x86
+		{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}.Debug|x86.Build.0 = Debug|x86
+		{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}.Debug|x86.Deploy.0 = Debug|x86
+		{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}.Release|x64.ActiveCfg = Release|x64
+		{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}.Release|x64.Build.0 = Release|x64
+		{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}.Release|x64.Deploy.0 = Release|x64
+		{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}.Release|x86.ActiveCfg = Release|x86
+		{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}.Release|x86.Build.0 = Release|x86
+		{F4114995-3AAC-4A93-8ABE-990D6CDA5E23}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C16EE8A-E6AA-46ED-B1D6-2EAB62D83719}
+	EndGlobalSection
+EndGlobal
