@@ -8,6 +8,11 @@ namespace XamlIslandsSample.WinFormsCore
         {
             InitializeComponent();
 
+            SuspendLayout();
+            ClientSize = new System.Drawing.Size(1200, 768);
+            Text = "Host Form";
+            ResumeLayout(true);
+
             var myHostControl = new Microsoft.Toolkit.Forms.UI.XamlHost.WindowsXamlHost();
 
             var entryForm = Microsoft.Toolkit.Win32.UI.XamlHost.UWPTypeFactory.CreateXamlContentByType(
