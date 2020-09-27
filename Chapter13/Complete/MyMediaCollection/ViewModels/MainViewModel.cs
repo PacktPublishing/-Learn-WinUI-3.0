@@ -113,15 +113,18 @@ namespace MyMediaCollection.ViewModels
             get => selectedMediaItem;
             set
             {
+#if DEBUG
                 Crashes.GenerateTestCrash();
+#endif
+                if (SetProperty(ref selectedMediaItem, value))
+                {
+                    ((RelayCommand)DeleteCommand).RaiseCanExecuteChanged();
 
-                SetProperty(ref selectedMediaItem, value);
-                ((RelayCommand)DeleteCommand).RaiseCanExecuteChanged();
-
-                Analytics.TrackEvent("Item selected", new Dictionary<string, string> {
-                    { "MediaType", selectedMediaItem.MediaType.ToString() },
-                    { "ItemName", selectedMediaItem.Name }
-                });
+                    Analytics.TrackEvent("Item selected", new Dictionary<string, string> {
+                        { "MediaType", selectedMediaItem.MediaType.ToString() },
+                        { "ItemName", selectedMediaItem.Name }
+                    });
+                }
             }
         }
 
