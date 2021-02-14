@@ -107,7 +107,7 @@
       <Version>6.2.11</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.WinUI">
-      <Version>3.0.0-preview3.201113.0</Version>
+      <Version>3.0.0-preview4.210210.4</Version>
     </PackageReference>
     <PackageReference Include="Moq">
       <Version>4.16.0</Version>
