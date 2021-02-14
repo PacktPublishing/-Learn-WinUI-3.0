@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamlIslandsSample.WinFormsC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlIslandsSample.UwpApp", "XamlIslandsSample.UwpApp\XamlIslandsSample.UwpApp.csproj", "{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlIslandsSample.WpfCore", "XamlIslandsSample.WpfCore\XamlIslandsSample.WpfCore.csproj", "{99CCEDAD-95D3-4332-B4CE-D48F619B8C29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamlIslandsSample.WpfCore", "XamlIslandsSample.WpfCore\XamlIslandsSample.WpfCore.csproj", "{99CCEDAD-95D3-4332-B4CE-D48F619B8C29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlIslandsSample.WpfMaps", "XamlIslandsSample.WpfMaps\XamlIslandsSample.WpfMaps.csproj", "{CB860344-55B8-4F8D-B1F8-9BC4287EE059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamlIslandsSample.WpfMaps", "XamlIslandsSample.WpfMaps\XamlIslandsSample.WpfMaps.csproj", "{CB860344-55B8-4F8D-B1F8-9BC4287EE059}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlIslandsSample.WinFormsBrowser", "XamlIslandsSample.WinFormsBrowser\XamlIslandsSample.WinFormsBrowser.csproj", "{A5661790-C9E4-4A57-8051-F0DA1847DFC4}"
 EndProject
@@ -27,8 +27,8 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1DF9E37A-4B41-48A6-AB54-E9731E92D28D}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{1DF9E37A-4B41-48A6-AB54-E9731E92D28D}.Debug|Any CPU.Build.0 = Debug|x86
+		{1DF9E37A-4B41-48A6-AB54-E9731E92D28D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DF9E37A-4B41-48A6-AB54-E9731E92D28D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DF9E37A-4B41-48A6-AB54-E9731E92D28D}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{1DF9E37A-4B41-48A6-AB54-E9731E92D28D}.Debug|ARM.Build.0 = Debug|Any CPU
 		{1DF9E37A-4B41-48A6-AB54-E9731E92D28D}.Debug|ARM64.ActiveCfg = Debug|Any CPU
@@ -49,6 +49,7 @@ Global
 		{1DF9E37A-4B41-48A6-AB54-E9731E92D28D}.Release|x86.Build.0 = Release|Any CPU
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Debug|Any CPU.Build.0 = Debug|x86
+		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Debug|ARM.ActiveCfg = Debug|ARM
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Debug|ARM.Build.0 = Debug|ARM
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -62,6 +63,8 @@ Global
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Debug|x86.Build.0 = Debug|x86
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Debug|x86.Deploy.0 = Debug|x86
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Release|Any CPU.ActiveCfg = Release|x86
+		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Release|Any CPU.Build.0 = Release|x86
+		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Release|Any CPU.Deploy.0 = Release|x86
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Release|ARM.ActiveCfg = Release|ARM
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Release|ARM.Build.0 = Release|ARM
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Release|ARM.Deploy.0 = Release|ARM
@@ -74,8 +77,8 @@ Global
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Release|x86.ActiveCfg = Release|x86
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Release|x86.Build.0 = Release|x86
 		{F6B72116-F1CD-4506-BE4C-F5A04C1F3BBD}.Release|x86.Deploy.0 = Release|x86
-		{99CCEDAD-95D3-4332-B4CE-D48F619B8C29}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{99CCEDAD-95D3-4332-B4CE-D48F619B8C29}.Debug|Any CPU.Build.0 = Debug|x86
+		{99CCEDAD-95D3-4332-B4CE-D48F619B8C29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99CCEDAD-95D3-4332-B4CE-D48F619B8C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99CCEDAD-95D3-4332-B4CE-D48F619B8C29}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{99CCEDAD-95D3-4332-B4CE-D48F619B8C29}.Debug|ARM.Build.0 = Debug|Any CPU
 		{99CCEDAD-95D3-4332-B4CE-D48F619B8C29}.Debug|ARM64.ActiveCfg = Debug|Any CPU

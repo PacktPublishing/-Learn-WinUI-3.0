@@ -1,27 +1,21 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <StartupObject>XamlIslandsSample.WinFormsCore.Program</StartupObject>
-    <Platforms>AnyCPU;x86</Platforms>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Toolkit.Forms.UI.XamlHost" Version="6.1.1" />
+    <PackageReference Include="Microsoft.Toolkit.Forms.UI.XamlHost" Version="6.1.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\XamlIslandsSample.UwpApp\XamlIslandsSample.UwpApp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.7" />
   </ItemGroup>
 
 </Project>

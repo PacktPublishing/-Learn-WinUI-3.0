@@ -39,7 +39,6 @@
             this.webView21.Size = new System.Drawing.Size(800, 450);
             this.webView21.Source = new System.Uri("https://microsoft.github.io/microsoft-ui-xaml/", System.UriKind.Absolute);
             this.webView21.TabIndex = 0;
-            this.webView21.Text = "webViewBrowser";
             this.webView21.ZoomFactor = 1D;
             // 
             // Form1
