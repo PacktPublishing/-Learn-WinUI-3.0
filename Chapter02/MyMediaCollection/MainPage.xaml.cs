@@ -16,6 +16,7 @@ namespace MyMediaCollection
         public IList<MediaItem> _items { get; set; }
         private IList<MediaItem> _allItems { get; set; }
         private IList<string> _mediums { get; set; }
+        private bool _isLoaded;
 
         public MainPage()
         {
@@ -40,6 +41,9 @@ namespace MyMediaCollection
 
         public void PopulateData()
         {
+            if (_isLoaded) return;
+            _isLoaded = true;
+
             var cd = new MediaItem
             {
                 Id = 1,
@@ -90,12 +94,14 @@ namespace MyMediaCollection
         private void ItemList_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             var listView = (ListView)sender;
+            PopulateData();
             listView.ItemsSource = _items;
         }
 
         private void ItemFilter_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             var filterCombo = (ComboBox)sender;
+            PopulateData();
             filterCombo.ItemsSource = _mediums;
             filterCombo.SelectedIndex = 0;
         }
