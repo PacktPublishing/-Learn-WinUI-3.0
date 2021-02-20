@@ -20,6 +20,7 @@
     <Grid VerticalAlignment="Top" Name="ParentGrid" HorizontalAlignment="Stretch" Padding="2">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -28,9 +29,12 @@
         </Grid.ColumnDefinitions>
         
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:"
-                    Margin="0,0,2,0" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ElementName=ParentGrid, Path=ActualWidth}"/>
-        <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,4,0,0"
+                   Margin="0,0,2,0" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{x:Bind Path=ViewModel.Name, Mode=TwoWay}"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Actual Width:"
+                   Margin="0,0,2,0" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ParentGrid, Path=ActualWidth, Mode=OneWay}"/>
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,4,0,0"
                     HorizontalAlignment="Right" VerticalAlignment="Top"
                     Orientation="Horizontal">
             <PersonPicture Initials="MS" Margin="0,0,8,0"/>
