@@ -17,12 +17,6 @@ namespace MyMediaCollection.ViewModels
         public MainViewModel()
         {
             PopulateData();
-
-            DeleteCommand = new RelayCommand(DeleteItem, CanDeleteItem);
-
-            // No CanExecute param is needed for this command
-            // because you can always add or edit items.
-            AddEditCommand = new RelayCommand(AddOrEditItem);
         }
 
         public void PopulateData()
@@ -125,11 +119,8 @@ namespace MyMediaCollection.ViewModels
             set
             {
                 SetProperty(ref selectedMediaItem, value);
-                ((RelayCommand)DeleteCommand).RaiseCanExecuteChanged();
             }
         }
-
-        public ICommand AddEditCommand { get; set; }
 
         public void AddOrEditItem()
         {
@@ -146,19 +137,13 @@ namespace MyMediaCollection.ViewModels
                 Name = $"CD {additionalItemCount}"
             };
 
-            allItems.Add(newItem);
             Items.Add(newItem);
             additionalItemCount++;
         }
 
-        public ICommand DeleteCommand { get; set; }
-
         public void DeleteItem()
         {
-            allItems.Remove(SelectedMediaItem);
             Items.Remove(SelectedMediaItem);
         }
-
-        private bool CanDeleteItem() => selectedMediaItem != null;
     }
 }
