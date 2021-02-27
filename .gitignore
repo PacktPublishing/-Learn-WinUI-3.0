@@ -2,10 +2,13 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/Chapter03/Complete/.vs/Ch03b-Complete-MyMediaCollection/v16
-/Chapter03/Complete/MyMediaCollection/obj/x64/Debug
-/Chapter03/Complete/MyMediaCollection.Test/obj/x64/Debug
-/Chapter05/Complete/.vs/Ch05b-Complete-MyMediaCollection/v16
-/Chapter05/Complete/MyMediaCollection/bin/x64/Debug
+/Chapter03/Complete/.vs
+/Chapter03/Complete/MyMediaCollection/bin
+/Chapter03/Complete/MyMediaCollection/obj
+/Chapter03/Complete/MyMediaCollection.Test/bin
+/Chapter03/Complete/MyMediaCollection.Test/obj
+/Chapter05/Complete/.vs
+/Chapter05/Complete/MyMediaCollection/bin
 /Chapter05/Complete/MyMediaCollection/obj
 /Chapter05/Complete/MyMediaCollection.Test/obj
+/Chapter05/Complete/MyMediaCollection.Test/bin

@@ -2,7 +2,6 @@
 using MyMediaCollection.Enums;
 using MyMediaCollection.Model;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace MyMediaCollection.ViewModels
 {
