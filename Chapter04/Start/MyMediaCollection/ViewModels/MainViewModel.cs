@@ -2,7 +2,6 @@
 using MyMediaCollection.Enums;
 using MyMediaCollection.Model;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace MyMediaCollection.ViewModels
 {
@@ -147,6 +146,7 @@ namespace MyMediaCollection.ViewModels
                 Name = $"CD {additionalItemCount}"
             };
 
+            allItems.Add(newItem);
             Items.Add(newItem);
             additionalItemCount++;
         }
@@ -155,6 +155,7 @@ namespace MyMediaCollection.ViewModels
 
         public void DeleteItem()
         {
+            allItems.Remove(SelectedMediaItem);
             Items.Remove(SelectedMediaItem);
         }
 
