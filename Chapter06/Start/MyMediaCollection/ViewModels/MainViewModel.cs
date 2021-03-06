@@ -2,7 +2,6 @@
 using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
 using System.Linq;
-using System.Collections.ObjectModel;
 
 namespace MyMediaCollection.ViewModels
 {
@@ -129,6 +128,7 @@ namespace MyMediaCollection.ViewModels
 
         private void DeleteItem()
         {
+            allItems.Remove(SelectedMediaItem);
             Items.Remove(SelectedMediaItem);
         }
 

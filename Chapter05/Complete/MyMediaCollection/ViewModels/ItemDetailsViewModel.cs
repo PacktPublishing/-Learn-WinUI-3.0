@@ -4,7 +4,6 @@ using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
 using System;
 using System.Linq;
-using System.Collections.ObjectModel;
 
 namespace MyMediaCollection.ViewModels
 {

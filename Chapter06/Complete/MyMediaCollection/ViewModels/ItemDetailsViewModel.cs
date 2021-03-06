@@ -3,7 +3,6 @@ using MyMediaCollection.Enums;
 using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
 using System;
-using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;

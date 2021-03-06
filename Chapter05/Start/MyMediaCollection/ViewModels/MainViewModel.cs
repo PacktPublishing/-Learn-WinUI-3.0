@@ -1,7 +1,6 @@
 ﻿using Microsoft.UI.Xaml.Input;
 using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
-using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace MyMediaCollection.ViewModels
@@ -129,6 +128,7 @@ namespace MyMediaCollection.ViewModels
 
         private void DeleteItem()
         {
+            allItems.Remove(SelectedMediaItem);
             Items.Remove(SelectedMediaItem);
         }
 
