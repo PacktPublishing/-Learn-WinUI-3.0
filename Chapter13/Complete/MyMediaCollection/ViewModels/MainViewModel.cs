@@ -4,7 +4,6 @@ using Microsoft.UI.Xaml.Input;
 using MyMediaCollection.Interfaces;
 using MyMediaCollection.Model;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 

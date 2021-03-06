@@ -108,6 +108,7 @@
     <Compile Include="ViewModels\ItemDetailsViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\ObservableCollection.cs" />
     <Compile Include="Views\ItemDetailsPage.xaml.cs">
       <DependentUpon>ItemDetailsPage.xaml</DependentUpon>
     </Compile>
@@ -153,7 +154,7 @@
       <Version>3.1.11</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.11</Version>
+      <Version>6.2.12</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.WinUI">
       <Version>3.0.0-preview4.210210.4</Version>
