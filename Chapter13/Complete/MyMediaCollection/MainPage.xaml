@@ -22,7 +22,7 @@
                 <TextBlock Text="Home" Style="{StaticResource SubheaderTextBlockStyle}" Margin="8"/>
             </StackPanel>
             
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="Media Type:" Margin="4"
                             Style="{StaticResource SubtitleTextBlockStyle}" VerticalAlignment="Bottom"/>
                 <ComboBox ItemsSource="{x:Bind ViewModel.Mediums}"
@@ -67,7 +67,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Border Grid.Row="2" BorderBrush="{ThemeResource SystemAccentColor}" BorderThickness="0,1,0,0" Margin="4,0,4,0">
+        <Border Grid.Row="2" BorderBrush="{ThemeResource SystemAccentColor}" BorderThickness="0,1,0,0" Margin="4,0">
             <StackPanel Grid.Row="2"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
