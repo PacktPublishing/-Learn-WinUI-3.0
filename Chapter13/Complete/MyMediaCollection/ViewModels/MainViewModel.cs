@@ -23,16 +23,16 @@ namespace MyMediaCollection.ViewModels
             _navigationService = navigationService;
             _dataService = dataService;
 
-            PopulateDataAsync().Wait();
-
             DeleteCommand = new RelayCommand(async () => await DeleteItemAsync(), CanDeleteItem);
             AddEditCommand = new RelayCommand(AddOrEditItem);
+
+            PopulateDataAsync();
         }
 
         public async Task PopulateDataAsync()
         {
             items.Clear();
-
+            
             foreach(var item in await _dataService.GetItemsAsync())
             {
                 items.Add(item);

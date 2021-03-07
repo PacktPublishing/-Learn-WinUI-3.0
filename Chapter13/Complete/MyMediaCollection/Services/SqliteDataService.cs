@@ -174,8 +174,8 @@ namespace MyMediaCollection.Services
 
         private async Task<SqliteConnection> GetOpenConnectionAsync()
         {
-            await ApplicationData.Current.RoamingFolder.CreateFileAsync(DbName, CreationCollisionOption.OpenIfExists).AsTask().ConfigureAwait(false);
-            string dbPath = Path.Combine(ApplicationData.Current.RoamingFolder.Path, DbName);
+            await ApplicationData.Current.LocalFolder.CreateFileAsync(DbName, CreationCollisionOption.OpenIfExists).AsTask().ConfigureAwait(false);
+            string dbPath = Path.Combine(ApplicationData.Current.LocalFolder.Path, DbName);
             var cn = new SqliteConnection($"Filename={dbPath}");
             cn.Open();
 
