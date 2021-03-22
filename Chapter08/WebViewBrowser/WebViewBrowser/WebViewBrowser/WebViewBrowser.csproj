@@ -13,4 +13,9 @@
     <PackageReference Include="Microsoft.WinUI" Version="3.0.0-preview4.210210.4" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\WebViewBrowser.Bus\WebViewBrowser.Bus.csproj" />
+    <ProjectReference Include="..\..\WebViewBrowser.Controls\WebViewBrowser.Controls.csproj" />
+  </ItemGroup>
 </Project>

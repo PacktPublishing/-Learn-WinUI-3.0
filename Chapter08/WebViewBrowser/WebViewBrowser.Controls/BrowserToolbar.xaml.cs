@@ -2,6 +2,9 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 
+// To learn more about WinUI, the WinUI project structure,
+// and more about our project templates, see: http://aka.ms/winui-project-info.
+
 namespace WebViewBrowser.Controls
 {
     public sealed partial class BrowserToolbar : UserControl
@@ -10,7 +13,7 @@ namespace WebViewBrowser.Controls
 
         public event RoutedEventHandler ReloadClicked;
         public event RoutedEventHandler UrlEntered;
-        
+
         public BrowserToolbar()
         {
             this.InitializeComponent();
@@ -34,7 +37,7 @@ namespace WebViewBrowser.Controls
             ReloadClicked?.Invoke(this, new RoutedEventArgs());
         }
 
-        public static readonly DependencyProperty UrlSourceProperty = 
+        public static readonly DependencyProperty UrlSourceProperty =
             DependencyProperty.Register(nameof(UrlSource),
                                         typeof(System.Uri),
                                         typeof(BrowserToolbar),

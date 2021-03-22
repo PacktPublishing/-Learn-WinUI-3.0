@@ -6,7 +6,7 @@
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
   </PropertyGroup>
   <ItemGroup>
-    <Page Remove="BrowserToolbar.xaml" />
+    <None Remove="BrowserToolbar.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="BrowserToolbar.xaml">
+    <Page Update="BrowserToolbar.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </None>
+    </Page>
   </ItemGroup>
 </Project>
