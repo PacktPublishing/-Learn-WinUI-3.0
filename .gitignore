@@ -56,3 +56,31 @@
 /Chapter08/WebViewBrowser/WebViewBrowser.Bus/bin
 /Chapter08/WebViewBrowser/WebViewBrowser.Controls/bin
 /Chapter08/WebViewBrowser/WebViewBrowser.WPF/bin
+/Chapter09/Start/HardwareSupplies/HardwareSupplies/bin
+/Chapter09/Start/HardwareSupplies/HardwareSupplies/obj
+/Chapter09/Start/HardwareSupplies/HardwareSupplies (Package)/bin
+/Chapter09/Start/HardwareSupplies/HardwareSupplies (Package)/obj
+/Chapter09/Start/HardwareSupplies/HardwareSupplies (Package)/HardwareSupplies (Package).wapproj.user
+/Chapter09/Start/.vs/Ch09a-Start-HardwareSupplies/v16/.suo
+/Chapter09/Complete/.vs/Ch09b-Complete-HardwareSupplies/v16/.suo
+/Chapter09/Complete/HardwareSupplies/HardwareSupplies/bin
+/Chapter09/Complete/HardwareSupplies/HardwareSupplies/obj
+/Chapter09/Complete/HardwareSupplies/HardwareSupplies (Package)/bin
+/Chapter09/Complete/HardwareSupplies/HardwareSupplies (Package)/obj
+/Chapter09/Complete/HardwareSupplies/HardwareSupplies (Package)/HardwareSupplies (Package).wapproj.user
+/Chapter09/Start/.vs/Ch09a-Start-HardwareSupplies/DesignTimeBuild/.dtbcache.v2
+/Chapter10/XamlIslandsSample/.vs/Ch10-XamlIslandsSample/v16/.suo
+/Chapter10/XamlIslandsSample/packages
+/Chapter10/XamlIslandsSample/XamlIslandsSample.UwpApp/bin
+/Chapter10/XamlIslandsSample/XamlIslandsSample.UwpApp/obj
+/Chapter10/XamlIslandsSample/XamlIslandsSample.WinFormsBrowser/bin
+/Chapter10/XamlIslandsSample/XamlIslandsSample.WinFormsBrowser/obj
+/Chapter10/XamlIslandsSample/XamlIslandsSample.WinFormsCore/obj
+/Chapter10/XamlIslandsSample/XamlIslandsSample.WpfCore/obj
+/Chapter10/XamlIslandsSample/XamlIslandsSample.WpfMaps/bin
+/Chapter10/XamlIslandsSample/XamlIslandsSample.WpfMaps/obj
+/Chapter10/XamlIslandsSample/XamlIslandsSample.WinFormsCore/XamlIslandsSample.WinFormsCore.csproj.user
+/Chapter09/Complete/.vs/Ch09b-Complete-HardwareSupplies/DesignTimeBuild/.dtbcache.v2
+/Chapter10/XamlIslandsSample/.vs/Ch10-XamlIslandsSample/DesignTimeBuild/.dtbcache.v2
+/Chapter10/XamlIslandsSample/XamlIslandsSample.WpfCore/bin
+/Chapter10/XamlIslandsSample/XamlIslandsSample.WinFormsCore/bin

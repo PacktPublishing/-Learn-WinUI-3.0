@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,9 +14,5 @@
   <ItemGroup>
     <ProjectReference Include="..\XamlIslandsSample.UwpApp\XamlIslandsSample.UwpApp.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="Microsoft.VCRTForwarders.140" Version="1.0.7" />
-  </ItemGroup>
-
+  
 </Project>
