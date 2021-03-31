@@ -1,8 +1,8 @@
 # Learn WinUI 3.0
 
-<a href="https://www.packtpub.com/product/learn-winui-3-0/9781800208667?utm_source=github&utm_medium=repository&utm_campaign=9781786461629"><img src="" alt="" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/product/learn-winui-3-0/9781800208667?utm_source=github&utm_medium=repository&utm_campaign=9781786461629"><img src="https://static.packt-cdn.com/products/9781800208667/cover/smaller" alt="Learn WinUI 3.0" height="256px" align="right"></a>
 
-This is the code repository for [](https://www.packtpub.com/product/learn-winui-3-0/9781800208667?utm_source=github&utm_medium=repository&utm_campaign=9781786461629), published by Packt.
+This is the code repository for [Learn WinUI 3.0](https://www.packtpub.com/product/learn-winui-3-0/9781800208667?utm_source=github&utm_medium=repository&utm_campaign=9781786461629), published by Packt.
 
 **Leverage the power of WinUI, the future of native Windows application development**
 
@@ -61,6 +61,9 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 is a software engineer and developer community champion with over 25 years of experience in software development. Working primarily with Microsoft Windows, web, and cloud technologies, his career has focused primarily on the healthcare industry. He has been awarded as a Microsoft MVP 11 times, most recently as a Windows Dev MVP.
 Alvin works in the Philadelphia area for Allscripts, a global healthcare software company, as a principal software engineer. He is also a board member of the TechBash Foundation, where he helps organize the annual TechBash developer conference. He has previously worked for companies such as Oracle, Genzeon, CSC, and ITG Pathfinders.
 Originally from the Allentown, PA area, Alvin currently resides in West Grove, PA with his wife and three daughters.
+
+
+
 
 
 
