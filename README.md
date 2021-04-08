@@ -54,13 +54,10 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 * Page 47: The sentence "To add a new folder to the project, right-click on the MyMediaCollection project in Solution Explorer and select Add | New Folder." must be read as "To add a new folder to the project, right-click on the Enums folder in Solution Explorer and select Add | New Folder."
 
 ### Related products
-*  [[Packt]](https://www.packtpub.com/product/adopting-net-5/9781800560567?utm_source=github&utm_medium=repository&utm_campaign=) [[Amazon]](https://www.amazon.com/dp/1800560567)
+* Adopting .NET 5[[Packt]](https://www.packtpub.com/product/adopting-net-5/9781800560567?utm_source=github&utm_medium=repository&utm_campaign=) [[Amazon]](https://www.amazon.com/dp/1800560567)
 
 * ASP.NET Core 5 for Beginners [[Packt]](https://www.packtpub.com/product/asp-net-core-5-for-beginners/9781800567184?utm_source=github&utm_medium=repository&utm_campaign=9781800567184) [[Amazon]](https://www.amazon.com/dp/1800567189)
 
-*  [[Packt]]() [[Amazon]](https://www.amazon.com/dp/)
-
-*  [[Packt]]() [[Amazon]](https://www.amazon.com/dp/)
 
 ## Get to Know the Author
 **Alvin Ashcraft**
