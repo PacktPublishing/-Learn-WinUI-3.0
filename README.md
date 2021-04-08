@@ -48,7 +48,7 @@ With the following software and hardware list you can run all code files present
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://static.packt-cdn.com/downloads/9781800208667_ColorImages.pdf).
 
 ### Errata
-* Page 12: The sentence "The first ColumnDefinition has its Height set to Auto, and the second has Height="*"." must be read as "The first ColumnDefinition has its Width set to Auto, and the second has Width="*"."
+* Page 12: The sentence "The first ColumnDefinition has its Height set to Auto, and the second has Height="\*"." must be read as "The first ColumnDefinition has its Width set to Auto, and the second has Width="\*"."
 * Page 30: The sentence "For instance, applications targeting difference versions of .NET Core can be deployed side by side on a machine without creating version conflicts." must be read as "For instance, applications targeting different versions of .NET Core can be deployed side by side on a machine without creating version conflicts."
 * Page 43: The Third point "OnSuspended" must be read as "OnSuspending"
 * Page 47: The sentence "To add a new folder to the project, right-click on the MyMediaCollection project in Solution Explorer and select Add | New Folder." must be read as "To add a new folder to the project, right-click on the Enums folder in Solution Explorer and select Add | New Folder."
