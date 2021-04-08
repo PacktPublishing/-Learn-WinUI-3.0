@@ -47,6 +47,12 @@ With the following software and hardware list you can run all code files present
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://static.packt-cdn.com/downloads/9781800208667_ColorImages.pdf).
 
+### Errata
+* Page 12: The sentence "The first ColumnDefinition has its Height set to Auto, and the second has Height="*"." must be read as "The first ColumnDefinition has its Width set to Auto, and the second has Width="*"."
+* Page 30: The sentence "For instance, applications targeting difference versions of .NET Core can be deployed side by side on a machine without creating version conflicts." must be read as "For instance, applications targeting different versions of .NET Core can be deployed side by side on a machine without creating version conflicts."
+* Page 43: The Third point "OnSuspended" must be read as "OnSuspending"
+* Page 47: The sentence "To add a new folder to the project, right-click on the MyMediaCollection project in Solution Explorer and select Add | New Folder." must be read as "To add a new folder to the project, right-click on the Enums folder in Solution Explorer and select Add | New Folder."
+
 ### Related products
 *  [[Packt]](https://www.packtpub.com/product/adopting-net-5/9781800560567?utm_source=github&utm_medium=repository&utm_campaign=) [[Amazon]](https://www.amazon.com/dp/1800560567)
 
@@ -61,6 +67,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 is a software engineer and developer community champion with over 25 years of experience in software development. Working primarily with Microsoft Windows, web, and cloud technologies, his career has focused primarily on the healthcare industry. He has been awarded as a Microsoft MVP 11 times, most recently as a Windows Dev MVP.
 Alvin works in the Philadelphia area for Allscripts, a global healthcare software company, as a principal software engineer. He is also a board member of the TechBash Foundation, where he helps organize the annual TechBash developer conference. He has previously worked for companies such as Oracle, Genzeon, CSC, and ITG Pathfinders.
 Originally from the Allentown, PA area, Alvin currently resides in West Grove, PA with his wife and three daughters.
+
 
 
 
