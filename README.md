@@ -52,6 +52,10 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 * Page 30: The sentence "For instance, applications targeting difference versions of .NET Core can be deployed side by side on a machine without creating version conflicts." must be read as "For instance, applications targeting different versions of .NET Core can be deployed side by side on a machine without creating version conflicts."
 * Page 43: The Third point "OnSuspended" must be read as "OnSuspending"
 * Page 47: The sentence "To add a new folder to the project, right-click on the MyMediaCollection project in Solution Explorer and select Add | New Folder." must be read as "To add a new folder to the project, right-click on the Enums folder in Solution Explorer and select Add | New Folder."
+* Page 78: The sentence "From this, you can derive that there is a markup extension class named Binding and that two of its properties are Path and Mode." must be read as "From this, you can derive that there is a markup extension class named Bind and that two of its properties are Path and Mode."
+* Page 78: The sentence "WPF and Xamarin have custom markup extensions, but UWP and WinUI do not." must be read as "WPF and Xamarin have custom markup extensions."
+* Page 92: The sentence "We added a unit test project to the solution with a suite of five unit tests, covering a majority of the MainViewModel logic." is not valid
+* Page 378: The sentence "The file is created in Ain't Markup Language (YAML) format.YAML files are becoming very popular for DevOps workflows." must be read as "The file is created in YAML Ain't Markup Language (YAML) format.YAML files are becoming very popular for DevOps workflows."
 
 ### Related products
 * Adopting .NET 5[[Packt]](https://www.packtpub.com/product/adopting-net-5/9781800560567?utm_source=github&utm_medium=repository&utm_campaign=) [[Amazon]](https://www.amazon.com/dp/1800560567)
