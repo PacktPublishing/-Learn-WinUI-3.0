@@ -26,6 +26,7 @@ namespace MyMediaCollection.ViewModels
             _navigationService = navigationService;
             _dataService = dataService;
 
+            PopulateLists();
             SaveCommand = new RelayCommand(SaveItem, CanSaveItem);
             CancelCommand = new RelayCommand(Cancel);
         }
@@ -33,9 +34,8 @@ namespace MyMediaCollection.ViewModels
         public void InitializeItemDetailData(int selectedItemId)
         {
             _selectedItemId = selectedItemId;
-            PopulateLists();
+            
             PopulateExistingItem(_dataService);
-
             IsDirty = false;
         }
 
