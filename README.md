@@ -1,3 +1,7 @@
+## [Get this title for $10 on Packt's Spring Sale](https://www.packt.com/B15930?utm_source=github&utm_medium=packt-github-repo&utm_campaign=spring_10_dollar_2022)
+-----
+For a limited period, all eBooks and Videos are only $10. All the practical content you need \- by developers, for developers
+
 # Learn WinUI 3.0
 
 <a href="https://www.packtpub.com/product/learn-winui-3-0/9781800208667?utm_source=github&utm_medium=repository&utm_campaign=9781786461629"><img src="https://static.packt-cdn.com/products/9781800208667/cover/smaller" alt="Learn WinUI 3.0" height="256px" align="right"></a>
